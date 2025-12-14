@@ -1,15 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Play } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 interface HeroProps {
     onBookCall: () => void;
-    onSubmitBrief: () => void;
     onApplyTalent: () => void;
 }
 
-export default function Hero({ onBookCall, onSubmitBrief, onApplyTalent }: HeroProps) {
+export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
             {/* Background Effects */}
@@ -89,13 +88,6 @@ export default function Hero({ onBookCall, onSubmitBrief, onApplyTalent }: HeroP
                         >
                             Book a Call
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </button>
-                        <button
-                            onClick={onSubmitBrief}
-                            className="btn btn-secondary text-base px-8 py-4 group"
-                        >
-                            <Play className="w-4 h-4" />
-                            Submit Project Brief
                         </button>
                     </motion.div>
 

@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Building2, User, ArrowRight, Calendar, FileText } from "lucide-react";
+import { Building2, User, ArrowRight, Calendar } from "lucide-react";
 
 const containerVariants = {
     hidden: {},
@@ -18,17 +18,16 @@ const itemVariants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, ease: "easeOut" }
+        transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] }
     },
 };
 
 interface ConversionPanelsProps {
     onBookCall: () => void;
-    onSubmitBrief: () => void;
     onApplyTalent: () => void;
 }
 
-export default function ConversionPanels({ onBookCall, onSubmitBrief, onApplyTalent }: ConversionPanelsProps) {
+export default function ConversionPanels({ onBookCall, onApplyTalent }: ConversionPanelsProps) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -45,7 +44,6 @@ export default function ConversionPanels({ onBookCall, onSubmitBrief, onApplyTal
                     {/* Companies Panel */}
                     <motion.div
                         variants={itemVariants}
-                        id="brief"
                         className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 border border-indigo-500/20 p-8 md:p-10"
                     >
                         {/* Decorative glow */}
@@ -63,23 +61,14 @@ export default function ConversionPanels({ onBookCall, onSubmitBrief, onApplyTal
                                 Book a call and get a scoped plan within 24–48 hours. We'll define deliverables, timeline, and pricing.
                             </p>
 
-                            <div className="flex flex-col sm:flex-row gap-4">
-                                <button
-                                    onClick={onBookCall}
-                                    className="btn btn-primary group"
-                                >
-                                    <Calendar className="w-5 h-5" />
-                                    Book a Call
-                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                </button>
-                                <button
-                                    onClick={onSubmitBrief}
-                                    className="btn btn-secondary group"
-                                >
-                                    <FileText className="w-5 h-5" />
-                                    Submit Brief
-                                </button>
-                            </div>
+                            <button
+                                onClick={onBookCall}
+                                className="btn btn-primary group"
+                            >
+                                <Calendar className="w-5 h-5" />
+                                Book a Call
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </button>
                         </div>
                     </motion.div>
 
