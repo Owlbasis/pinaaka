@@ -9,13 +9,11 @@ interface HeroProps {
     onApplyTalent: () => void;
 }
 
-// Words that cycle through
 const rotatingWords = ["faster", "cheaper", "reliably"];
 
 export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
     const [wordIndex, setWordIndex] = useState(0);
 
-    // Rotate words every 2 seconds
     useEffect(() => {
         const interval = setInterval(() => {
             setWordIndex((prev) => (prev + 1) % rotatingWords.length);
@@ -24,103 +22,131 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
     }, []);
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-            {/* Animated background elements */}
-            <div className="absolute inset-0 overflow-hidden">
-                {/* Floating shapes */}
-                <motion.div
-                    className="absolute w-72 h-72 rounded-full opacity-[0.03]"
-                    style={{
-                        background: 'radial-gradient(circle, var(--accent-primary) 0%, transparent 70%)',
-                        top: '20%',
-                        left: '10%'
-                    }}
-                    animate={{
-                        x: [0, 30, 0],
-                        y: [0, -20, 0],
-                    }}
-                    transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                />
-                <motion.div
-                    className="absolute w-96 h-96 rounded-full opacity-[0.02]"
-                    style={{
-                        background: 'radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%)',
-                        bottom: '20%',
-                        right: '10%'
-                    }}
-                    animate={{
-                        x: [0, -40, 0],
-                        y: [0, 30, 0],
-                    }}
-                    transition={{
-                        duration: 10,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                />
+        <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#0a0a0f]">
+            {/* Stars */}
+            <div className="absolute inset-0">
+                {[...Array(50)].map((_, i) => (
+                    <motion.div
+                        key={i}
+                        className="absolute w-[2px] h-[2px] bg-white rounded-full"
+                        style={{
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            opacity: 0.2 + Math.random() * 0.5,
+                        }}
+                        animate={{
+                            opacity: [0.2, 0.6, 0.2],
+                        }}
+                        transition={{
+                            duration: 2 + Math.random() * 3,
+                            repeat: Infinity,
+                            delay: Math.random() * 2,
+                        }}
+                    />
+                ))}
             </div>
+
+            {/* Moon */}
+            <motion.div
+                className="absolute top-16 right-16 md:top-24 md:right-24"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+            >
+                <div
+                    className="w-24 h-24 md:w-32 md:h-32 rounded-full relative"
+                    style={{
+                        background: "radial-gradient(circle at 30% 30%, #fefcd7 0%, #e8e4c9 40%, #c9c5a8 100%)",
+                        boxShadow: "0 0 60px 20px rgba(254, 252, 215, 0.15), 0 0 120px 40px rgba(254, 252, 215, 0.08)",
+                    }}
+                >
+                    {/* Moon craters */}
+                    <div className="absolute w-4 h-4 rounded-full bg-[#d4d0b5] opacity-40 top-4 left-6" />
+                    <div className="absolute w-6 h-6 rounded-full bg-[#d4d0b5] opacity-30 top-12 left-4" />
+                    <div className="absolute w-3 h-3 rounded-full bg-[#d4d0b5] opacity-35 top-8 right-6" />
+                    <div className="absolute w-5 h-5 rounded-full bg-[#d4d0b5] opacity-25 bottom-6 right-8" />
+                </div>
+            </motion.div>
+
+            {/* Moonlight rays */}
+            <div
+                className="absolute top-0 right-0 w-full h-full pointer-events-none"
+                style={{
+                    background: "radial-gradient(ellipse at 85% 15%, rgba(254, 252, 215, 0.08) 0%, transparent 50%)",
+                }}
+            />
+            <motion.div
+                className="absolute top-0 right-0 w-[60%] h-[60%] pointer-events-none"
+                style={{
+                    background: "radial-gradient(ellipse at 100% 0%, rgba(254, 252, 215, 0.05) 0%, transparent 70%)",
+                }}
+                animate={{
+                    opacity: [0.5, 1, 0.5],
+                }}
+                transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                }}
+            />
 
             <div className="container relative z-10">
                 <div className="max-w-3xl mx-auto text-center">
-                    {/* Main Headline */}
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
-                        className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white"
                     >
                         Get projects shipped by{" "}
-                        <span className="text-gradient">job-ready builders</span>
+                        <span className="bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-200 bg-clip-text text-transparent">
+                            job-ready builders
+                        </span>
                         <br />
-                        <span className="text-[var(--text-secondary)]">— </span>
+                        <span className="text-gray-600">— </span>
                         <motion.span
                             key={wordIndex}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.4 }}
-                            className="text-[var(--accent-primary)] inline-block min-w-[140px]"
+                            className="text-amber-200 inline-block min-w-[140px]"
                         >
                             {rotatingWords[wordIndex]}
                         </motion.span>
-                        <span className="text-[var(--text-secondary)]">.</span>
+                        <span className="text-gray-600">.</span>
                     </motion.h1>
 
-                    {/* Subheadline */}
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-                        className="text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-4"
+                        transition={{ duration: 0.8, delay: 0.1 }}
+                        className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-4"
                     >
                         We scope your work, match vetted talent, add architecture guidance, and deliver.
                     </motion.p>
 
-                    {/* Price Anchor */}
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                        className="text-sm text-[var(--text-muted)] mb-8"
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="text-sm text-gray-500 mb-8"
                     >
-                        Starting at <span className="text-[var(--accent-primary)] font-semibold">$10/hour</span>
+                        Starting at <span className="text-amber-200 font-semibold">$10/hour</span>
                     </motion.p>
 
-                    {/* CTA */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                        className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className="flex items-center justify-center gap-4 mb-10"
                     >
                         <motion.button
                             onClick={onBookCall}
-                            className="btn btn-primary px-6 py-3 text-base"
-                            whileHover={{ scale: 1.02 }}
+                            className="px-8 py-4 bg-gradient-to-r from-amber-100 to-yellow-50 text-gray-900 rounded-full font-semibold flex items-center gap-2"
+                            style={{
+                                boxShadow: "0 0 30px rgba(254, 252, 215, 0.2)",
+                            }}
+                            whileHover={{ scale: 1.02, boxShadow: "0 0 50px rgba(254, 252, 215, 0.3)" }}
                             whileTap={{ scale: 0.98 }}
                         >
                             Book a Call
@@ -128,56 +154,43 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
                         </motion.button>
                     </motion.div>
 
-                    {/* Talent Link */}
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                        className="text-[var(--text-muted)] text-sm"
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="text-gray-500 text-sm"
                     >
                         Looking to work on real projects?{" "}
-                        <button onClick={onApplyTalent} className="text-[var(--accent-primary)] hover:underline">
+                        <button onClick={onApplyTalent} className="text-amber-200 hover:text-amber-100 transition-colors">
                             Apply as Talent →
                         </button>
                     </motion.p>
                 </div>
             </div>
 
-            {/* Animated stats/trust bar */}
+            {/* Stats bar */}
             <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="absolute bottom-12 left-0 right-0"
+                transition={{ duration: 1, delay: 0.6 }}
+                className="absolute bottom-12 left-0 right-0 z-10"
             >
                 <div className="container">
-                    <div className="flex items-center justify-center gap-8 md:gap-16 text-center">
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.7 }}
-                        >
-                            <div className="text-xl md:text-2xl font-bold text-[var(--accent-primary)]">$10</div>
-                            <div className="text-xs text-[var(--text-muted)]">per hour</div>
-                        </motion.div>
-                        <div className="w-px h-8 bg-[var(--border-subtle)]" />
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.8 }}
-                        >
-                            <div className="text-xl md:text-2xl font-bold">24-48h</div>
-                            <div className="text-xs text-[var(--text-muted)]">to scope</div>
-                        </motion.div>
-                        <div className="w-px h-8 bg-[var(--border-subtle)]" />
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.9 }}
-                        >
-                            <div className="text-xl md:text-2xl font-bold text-[var(--accent-green)]">2-3x</div>
-                            <div className="text-xs text-[var(--text-muted)]">faster delivery</div>
-                        </motion.div>
+                    <div className="flex items-center justify-center gap-10 md:gap-16 text-center">
+                        <div>
+                            <div className="text-2xl font-bold text-amber-100">$10</div>
+                            <div className="text-xs text-gray-500">per hour</div>
+                        </div>
+                        <div className="w-px h-8 bg-gray-800" />
+                        <div>
+                            <div className="text-2xl font-bold text-white">24-48h</div>
+                            <div className="text-xs text-gray-500">to scope</div>
+                        </div>
+                        <div className="w-px h-8 bg-gray-800" />
+                        <div>
+                            <div className="text-2xl font-bold text-emerald-400">2-3x</div>
+                            <div className="text-xs text-gray-500">faster</div>
+                        </div>
                     </div>
                 </div>
             </motion.div>
