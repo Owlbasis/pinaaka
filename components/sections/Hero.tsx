@@ -12,27 +12,75 @@ interface HeroProps {
 // Words that cycle through
 const rotatingWords = ["faster", "cheaper", "reliably"];
 
-// Starfish/star positions for random popping
-const starPositions = [
-    { top: "15%", left: "8%", size: 12, delay: 0.5 },
-    { top: "25%", right: "12%", size: 8, delay: 1.2 },
-    { top: "45%", left: "5%", size: 10, delay: 2.0 },
-    { top: "60%", right: "8%", size: 14, delay: 0.8 },
-    { top: "75%", left: "15%", size: 6, delay: 1.5 },
-    { top: "20%", right: "20%", size: 8, delay: 2.5 },
-    { top: "80%", right: "18%", size: 10, delay: 1.8 },
-    { top: "35%", left: "12%", size: 6, delay: 3.0 },
+// Jellyfish positions
+const jellyfishPositions = [
+    { top: "10%", left: "5%", scale: 0.6, delay: 0.3, color: "#f59e0b" },
+    { top: "30%", right: "8%", scale: 0.8, delay: 1.0, color: "#fbbf24" },
+    { top: "55%", left: "3%", scale: 0.5, delay: 1.8, color: "#f97316" },
+    { top: "70%", right: "5%", scale: 0.7, delay: 0.8, color: "#fcd34d" },
+    { top: "15%", right: "15%", scale: 0.4, delay: 2.0, color: "#fb923c" },
 ];
 
-// Starfish SVG component
-const Starfish = ({ size = 12 }: { size?: number }) => (
+// Jellyfish SVG component
+const Jellyfish = ({ color = "#f59e0b", scale = 1 }: { color?: string; scale?: number }) => (
     <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="currentColor"
+        width={60 * scale}
+        height={80 * scale}
+        viewBox="0 0 60 80"
+        fill="none"
+        style={{ filter: `drop-shadow(0 0 10px ${color}40)` }}
     >
-        <path d="M12 2L14.09 8.26L20.18 9.27L15.54 13.14L16.82 19.02L12 16.27L7.18 19.02L8.46 13.14L3.82 9.27L9.91 8.26L12 2Z" />
+        {/* Bell/dome */}
+        <ellipse cx="30" cy="20" rx="25" ry="18" fill={color} opacity="0.7" />
+        <ellipse cx="30" cy="20" rx="20" ry="14" fill={color} opacity="0.9" />
+        <ellipse cx="25" cy="15" rx="8" ry="5" fill="white" opacity="0.3" />
+
+        {/* Tentacles */}
+        <motion.path
+            d="M10 35 Q8 50 12 65 Q10 75 8 80"
+            stroke={color}
+            strokeWidth="2"
+            fill="none"
+            opacity="0.6"
+            animate={{ d: ["M10 35 Q8 50 12 65 Q10 75 8 80", "M10 35 Q12 50 8 65 Q12 75 10 80", "M10 35 Q8 50 12 65 Q10 75 8 80"] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.path
+            d="M20 36 Q18 55 22 70 Q20 78 18 80"
+            stroke={color}
+            strokeWidth="2"
+            fill="none"
+            opacity="0.5"
+            animate={{ d: ["M20 36 Q18 55 22 70 Q20 78 18 80", "M20 36 Q22 55 18 70 Q22 78 20 80", "M20 36 Q18 55 22 70 Q20 78 18 80"] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+        />
+        <motion.path
+            d="M30 38 Q28 58 32 75 Q30 78 30 80"
+            stroke={color}
+            strokeWidth="2.5"
+            fill="none"
+            opacity="0.6"
+            animate={{ d: ["M30 38 Q28 58 32 75 Q30 78 30 80", "M30 38 Q32 58 28 75 Q30 78 30 80", "M30 38 Q28 58 32 75 Q30 78 30 80"] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut", delay: 0.1 }}
+        />
+        <motion.path
+            d="M40 36 Q42 55 38 70 Q40 78 42 80"
+            stroke={color}
+            strokeWidth="2"
+            fill="none"
+            opacity="0.5"
+            animate={{ d: ["M40 36 Q42 55 38 70 Q40 78 42 80", "M40 36 Q38 55 42 70 Q38 78 40 80", "M40 36 Q42 55 38 70 Q40 78 42 80"] }}
+            transition={{ duration: 2.3, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+        />
+        <motion.path
+            d="M50 35 Q52 50 48 65 Q50 75 52 80"
+            stroke={color}
+            strokeWidth="2"
+            fill="none"
+            opacity="0.6"
+            animate={{ d: ["M50 35 Q52 50 48 65 Q50 75 52 80", "M50 35 Q48 50 52 65 Q48 75 50 80", "M50 35 Q52 50 48 65 Q50 75 52 80"] }}
+            transition={{ duration: 2.1, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+        />
     </svg>
 );
 
@@ -49,84 +97,42 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-            {/* Animated starfish popping in */}
-            {starPositions.map((star, index) => (
+            {/* Animated jellyfish floating */}
+            {jellyfishPositions.map((jelly, index) => (
                 <motion.div
                     key={index}
-                    className="absolute text-[var(--accent-primary)]"
+                    className="absolute pointer-events-none"
                     style={{
-                        top: star.top,
-                        left: star.left,
-                        right: star.right,
-                        opacity: 0.15,
+                        top: jelly.top,
+                        left: jelly.left,
+                        right: jelly.right,
                     }}
-                    initial={{ scale: 0, opacity: 0, rotate: -30 }}
+                    initial={{ opacity: 0, y: 50 }}
                     animate={{
-                        scale: [0, 1.2, 1],
-                        opacity: [0, 0.25, 0.15],
-                        rotate: [0, 15, 0]
+                        opacity: [0, 0.4, 0.3],
+                        y: [50, 0, 0]
                     }}
                     transition={{
-                        duration: 0.6,
-                        delay: star.delay,
+                        duration: 1.5,
+                        delay: jelly.delay,
                         ease: "easeOut"
                     }}
                 >
                     <motion.div
                         animate={{
-                            scale: [1, 1.1, 1],
-                            opacity: [0.15, 0.25, 0.15],
+                            y: [0, -15, 0],
+                            rotate: [-2, 2, -2],
                         }}
                         transition={{
-                            duration: 3,
+                            duration: 4 + index * 0.5,
                             repeat: Infinity,
-                            delay: star.delay + 0.6,
                             ease: "easeInOut"
                         }}
                     >
-                        <Starfish size={star.size} />
+                        <Jellyfish color={jelly.color} scale={jelly.scale} />
                     </motion.div>
                 </motion.div>
             ))}
-
-            {/* Animated background elements */}
-            <div className="absolute inset-0 overflow-hidden">
-                {/* Floating shapes */}
-                <motion.div
-                    className="absolute w-72 h-72 rounded-full opacity-[0.03]"
-                    style={{
-                        background: 'radial-gradient(circle, var(--accent-primary) 0%, transparent 70%)',
-                        top: '20%',
-                        left: '10%'
-                    }}
-                    animate={{
-                        x: [0, 30, 0],
-                        y: [0, -20, 0],
-                    }}
-                    transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                />
-                <motion.div
-                    className="absolute w-96 h-96 rounded-full opacity-[0.02]"
-                    style={{
-                        background: 'radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%)',
-                        bottom: '20%',
-                        right: '10%'
-                    }}
-                    animate={{
-                        x: [0, -40, 0],
-                        y: [0, 30, 0],
-                    }}
-                    transition={{
-                        duration: 10,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                />
-            </div>
 
             <div className="container relative z-10">
                 <div className="max-w-3xl mx-auto text-center">
