@@ -12,10 +12,34 @@ interface HeroProps {
 // Words that cycle through
 const rotatingWords = ["faster", "cheaper", "reliably"];
 
+// Starfish/star positions for random popping
+const starPositions = [
+    { top: "15%", left: "8%", size: 12, delay: 0.5 },
+    { top: "25%", right: "12%", size: 8, delay: 1.2 },
+    { top: "45%", left: "5%", size: 10, delay: 2.0 },
+    { top: "60%", right: "8%", size: 14, delay: 0.8 },
+    { top: "75%", left: "15%", size: 6, delay: 1.5 },
+    { top: "20%", right: "20%", size: 8, delay: 2.5 },
+    { top: "80%", right: "18%", size: 10, delay: 1.8 },
+    { top: "35%", left: "12%", size: 6, delay: 3.0 },
+];
+
+// Starfish SVG component
+const Starfish = ({ size = 12 }: { size?: number }) => (
+    <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+    >
+        <path d="M12 2L14.09 8.26L20.18 9.27L15.54 13.14L16.82 19.02L12 16.27L7.18 19.02L8.46 13.14L3.82 9.27L9.91 8.26L12 2Z" />
+    </svg>
+);
+
 export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
     const [wordIndex, setWordIndex] = useState(0);
 
-    // Rotate words every 2 seconds
+    // Rotate words every 2.5 seconds
     useEffect(() => {
         const interval = setInterval(() => {
             setWordIndex((prev) => (prev + 1) % rotatingWords.length);
@@ -25,6 +49,46 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+            {/* Animated starfish popping in */}
+            {starPositions.map((star, index) => (
+                <motion.div
+                    key={index}
+                    className="absolute text-[var(--accent-primary)]"
+                    style={{
+                        top: star.top,
+                        left: star.left,
+                        right: star.right,
+                        opacity: 0.15,
+                    }}
+                    initial={{ scale: 0, opacity: 0, rotate: -30 }}
+                    animate={{
+                        scale: [0, 1.2, 1],
+                        opacity: [0, 0.25, 0.15],
+                        rotate: [0, 15, 0]
+                    }}
+                    transition={{
+                        duration: 0.6,
+                        delay: star.delay,
+                        ease: "easeOut"
+                    }}
+                >
+                    <motion.div
+                        animate={{
+                            scale: [1, 1.1, 1],
+                            opacity: [0.15, 0.25, 0.15],
+                        }}
+                        transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            delay: star.delay + 0.6,
+                            ease: "easeInOut"
+                        }}
+                    >
+                        <Starfish size={star.size} />
+                    </motion.div>
+                </motion.div>
+            ))}
+
             {/* Animated background elements */}
             <div className="absolute inset-0 overflow-hidden">
                 {/* Floating shapes */}
