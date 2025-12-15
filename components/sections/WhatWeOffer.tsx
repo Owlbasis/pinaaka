@@ -79,7 +79,7 @@ export default function WhatWeOffer() {
                         variants={itemVariants}
                         className="text-gray-400 max-w-2xl mx-auto"
                     >
-                        From initial scoping to ongoing maintenance, we've got your project covered.
+                        From initial scoping to ongoing maintenance, we&apos;ve got your project covered.
                     </motion.p>
                 </motion.div>
 

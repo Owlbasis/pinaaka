@@ -56,7 +56,7 @@ export default function CalendarModal({ onClose }: CalendarModalProps) {
 
                         <h4 className="text-lg font-semibold mb-2">Calendar Opened in New Tab</h4>
                         <p className="text-gray-400 text-sm mb-6">
-                            Your Google Calendar booking page has opened in a new tab. If it didn't open, click the button below.
+                            Your Google Calendar booking page has opened in a new tab. If it didn&apos;t open, click the button below.
                         </p>
 
                         <a

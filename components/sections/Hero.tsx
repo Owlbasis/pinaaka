@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 interface HeroProps {
     onBookCall: () => void;
@@ -10,6 +10,19 @@ interface HeroProps {
 }
 
 const rotatingWords = ["faster", "cheaper", "reliably"];
+const STAR_COUNT = 50;
+
+const buildStars = () =>
+    Array.from({ length: STAR_COUNT }, (_, i) => {
+        const base = (i * 37) % 100;
+        return {
+            left: base,
+            top: (base * 1.7) % 100,
+            opacity: 0.25 + ((i * 13) % 50) / 100,
+            duration: 2 + ((i * 29) % 30) / 10,
+            delay: ((i * 17) % 20) / 10,
+        };
+    });
 
 export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
     const [wordIndex, setWordIndex] = useState(0);
@@ -21,26 +34,28 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
         return () => clearInterval(interval);
     }, []);
 
+    const stars = useMemo(() => buildStars(), []);
+
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#0a0a0f]">
             {/* Stars */}
             <div className="absolute inset-0">
-                {[...Array(50)].map((_, i) => (
+                {stars.map((star, i) => (
                     <motion.div
                         key={i}
                         className="absolute w-[2px] h-[2px] bg-white rounded-full"
                         style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            opacity: 0.2 + Math.random() * 0.5,
+                            left: `${star.left}%`,
+                            top: `${star.top}%`,
+                            opacity: star.opacity,
                         }}
                         animate={{
                             opacity: [0.2, 0.6, 0.2],
                         }}
                         transition={{
-                            duration: 2 + Math.random() * 3,
+                            duration: star.duration,
                             repeat: Infinity,
-                            delay: Math.random() * 2,
+                            delay: star.delay,
                         }}
                     />
                 ))}
