@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
 import { Clock, Target, CalendarRange, Check } from "lucide-react";
 
@@ -43,7 +43,7 @@ const pricingModels = [
     },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
     hidden: {},
     visible: {
         transition: {
@@ -52,7 +52,7 @@ const containerVariants = {
     },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
         opacity: 1,
