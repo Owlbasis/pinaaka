@@ -15,6 +15,7 @@ import CalendarModal from "@/components/CalendarModal";
 
 // Google Form for Talent Applications
 const TALENT_FORM_URL = "https://forms.gle/BgGQK3o2tJCiJosx9";
+const CALENDAR_URL = "https://calendar.app.google/2Q9w7NuDhySy6LHA9";
 
 export default function Home() {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -23,14 +24,18 @@ export default function Home() {
     window.open(TALENT_FORM_URL, "_blank", "noopener,noreferrer");
   };
 
+  const openCalendar = () => {
+    window.open(CALENDAR_URL, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <main className="relative">
       <Navigation
-        onBookCall={() => setShowCalendar(true)}
+        onBookCall={openCalendar}
         onApplyTalent={openTalentForm}
       />
       <Hero
-        onBookCall={() => setShowCalendar(true)}
+        onBookCall={openCalendar}
         onApplyTalent={openTalentForm}
       />
       <WhyThisWorks />
@@ -40,7 +45,7 @@ export default function Home() {
       <Pricing />
       <QualityControls />
       <ConversionPanels
-        onBookCall={() => setShowCalendar(true)}
+        onBookCall={openCalendar}
         onApplyTalent={openTalentForm}
       />
       <Footer />
