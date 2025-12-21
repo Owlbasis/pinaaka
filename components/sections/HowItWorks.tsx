@@ -14,33 +14,18 @@ import {
 const steps = [
     {
         icon: Phone,
-        title: "Discovery Call",
-        description: "Understand your goals, constraints, and timeline requirements.",
-    },
-    {
-        icon: FileSearch,
-        title: "Scope & PRD",
-        description: "Define features, deliverables, and acceptance criteria.",
-    },
-    {
-        icon: Users,
-        title: "Team Matching",
-        description: "Assign best-fit candidates with optional lead/mentor.",
-    },
-    {
-        icon: Compass,
-        title: "Architecture & Plan",
-        description: "Tech decisions, milestones, and definition of done.",
+        title: "You bring the intent",
+        description: "Idea, MVP, feature, system, or scale problem.",
     },
     {
         icon: Code,
-        title: "Build & Review",
-        description: "Weekly updates, demos, and quality gates.",
+        title: "We make it happen",
+        description: "(Team matching, execution planning, architecture, build, reviews, edge cases, and quality assurance)",
     },
     {
         icon: Rocket,
-        title: "Delivery & Maintenance",
-        description: "Handover plus optional monthly support.",
+        title: "Delivery, done right",
+        description: "Production-ready, scalable, and owned.",
     },
 ];
 
@@ -86,7 +71,7 @@ export default function HowItWorks() {
                         variants={itemVariants}
                         className="text-3xl md:text-4xl font-bold mb-4"
                     >
-                        From call to delivery in 6 steps
+                        From intent to delivery
                     </motion.h2>
                     <motion.p
                         variants={itemVariants}

@@ -120,23 +120,7 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
                         </button>
                     </motion.div>
 
-                    {/* Checkmarks / Social Proof */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-slate-500"
-                    >
-                        <div className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-emerald-500" />
-                            <span>Pre-vetted Senior Engineers</span>
-                        </div>
 
-                        <div className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-emerald-500" />
-                            <span>Tech Stack Agnostic</span>
-                        </div>
-                    </motion.div>
                 </div>
             </div>
         </section>
