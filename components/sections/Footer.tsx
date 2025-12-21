@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Mountain, Mail, Linkedin, Twitter } from "lucide-react";
+import Image from "next/image";
+import { Mail, Linkedin } from "lucide-react";
 
 export default function Footer() {
     return (
@@ -11,8 +12,13 @@ export default function Footer() {
                     {/* Logo & Description */}
                     <div className="flex flex-col items-center md:items-start gap-4">
                         <Link href="/" className="flex items-center gap-2">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-700 via-gray-600 to-gray-500 flex items-center justify-center">
-                                <Mountain className="w-5 h-5 text-white" />
+                            <div className="relative w-10 h-10">
+                                <Image
+                                    src="/logo.png"
+                                    alt="Charcoal Labs Logo"
+                                    fill
+                                    className="object-contain"
+                                />
                             </div>
                             <span className="text-xl font-bold text-white">Charcoal Labs</span>
                         </Link>

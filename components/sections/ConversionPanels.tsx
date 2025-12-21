@@ -25,7 +25,7 @@ export default function ConversionPanels({ onBookCall, onApplyTalent }: Conversi
                 >
                     {/* Companies Panel */}
                     <div className="card p-6 md:p-8">
-                        <h3 className="text-xl font-bold mb-2">Have a project?</h3>
+                        <h3 className="text-xl font-bold mb-2">Something in mind? Let’s make it real.</h3>
                         <p className="text-[var(--text-secondary)] text-sm mb-6">
                             Book a call and get a scoped plan within 24–48 hours.
                         </p>
@@ -38,7 +38,7 @@ export default function ConversionPanels({ onBookCall, onApplyTalent }: Conversi
 
                     {/* Talent Panel */}
                     <div className="card p-6 md:p-8" style={{ borderColor: 'rgba(0, 186, 124, 0.3)' }}>
-                        <h3 className="text-xl font-bold mb-2">Want to work on real projects?</h3>
+                        <h3 className="text-xl font-bold mb-2">Want to build real products?</h3>
                         <p className="text-[var(--text-secondary)] text-sm mb-6">
                             Apply with your skills and portfolio. Get matched to scoped work.
                         </p>

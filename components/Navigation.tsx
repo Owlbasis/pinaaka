@@ -2,8 +2,9 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Menu, X, Mountain } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
     { href: "#why", label: "Why Us" },
@@ -35,8 +36,13 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                 <div className="flex items-center justify-between">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2.5 group">
-                        <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-white/10 text-white overflow-hidden group-hover:bg-white/20 transition-colors">
-                            <Mountain className="w-5 h-5 fill-current" />
+                        <div className="relative w-8 h-8">
+                            <Image
+                                src="/logo.png"
+                                alt="Charcoal Labs Logo"
+                                fill
+                                className="object-contain"
+                            />
                         </div>
                         <span className="text-lg font-bold text-white tracking-tight">Charcoal Labs</span>
                     </Link>

@@ -9,15 +9,22 @@ interface HeroProps {
     onApplyTalent: () => void;
 }
 
-const rotatingWords = ["faster", "reliably", "scalably"];
+const flippingStatements = [
+    { left: "MVP", right: "Production" },
+    { left: "Idea", right: "Reality" },
+    { left: "Feature", right: "Launch" },
+    { left: "Systems", right: "Scale" },
+    { left: "Data", right: "Intelligence" },
+    { left: "AI", right: "Automation" },
+];
 
 export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
-    const [wordIndex, setWordIndex] = useState(0);
+    const [statementIndex, setStatementIndex] = useState(0);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setWordIndex((prev) => (prev + 1) % rotatingWords.length);
-        }, 3000);
+            setStatementIndex((prev) => (prev + 1) % flippingStatements.length);
+        }, 2500);
         return () => clearInterval(interval);
     }, []);
 
@@ -64,18 +71,32 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
                         </span>
                     </motion.h1>
 
-                    <motion.p
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+                        className="h-12 md:h-16 flex items-center justify-center mb-12"
                     >
-                        We bridge the gap between idea and implementation. Get matched with
-                        <span className="text-white font-medium"> top talent at affordable price</span>,
-                        receive architectural guidance, and ship
-                        <span className="inline-block min-w-[100px] text-left ml-1.5 font-semibold text-blue-400">
-                            {rotatingWords[wordIndex]}
-                        </span>
+                        <motion.div
+                            key={statementIndex}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="text-2xl md:text-3xl font-medium tracking-tight"
+                        >
+                            <span className="text-slate-400">{flippingStatements[statementIndex].left}</span>
+                            <span className="mx-3 text-blue-500">→</span>
+                            <span className="text-white">{flippingStatements[statementIndex].right}</span>
+                        </motion.div>
+                    </motion.div>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.25 }}
+                        className="text-slate-400 font-medium mb-4"
+                    >
+                        Something in mind? We make it happen.
                     </motion.p>
 
                     <motion.div
@@ -99,23 +120,7 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
                         </button>
                     </motion.div>
 
-                    {/* Checkmarks / Social Proof */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-slate-500"
-                    >
-                        <div className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-emerald-500" />
-                            <span>Pre-vetted Senior Engineers</span>
-                        </div>
 
-                        <div className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-emerald-500" />
-                            <span>Tech Stack Agnostic</span>
-                        </div>
-                    </motion.div>
                 </div>
             </div>
         </section>

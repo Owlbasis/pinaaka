@@ -9,39 +9,44 @@ import {
     MessageCircle,
     Shield,
     RefreshCw,
-    FileKey
+    FileKey,
+    ArrowRight
 } from "lucide-react";
+
+interface QualityControlsProps {
+    onBookCall: () => void;
+}
 
 const qualityPoints = [
     {
         icon: Lock,
-        title: "Scope Locked",
-        description: "Work begins only after scope is confirmed (or timeboxed discovery)",
+        title: "No scope surprises",
+        description: "Work starts only after scope is confirmed (or timeboxed discovery).",
     },
     {
         icon: Target,
-        title: "Milestones & Demos",
-        description: "Weekly updates and demos to track progress",
+        title: "You always know where things stand",
+        description: "Weekly demos and updates so progress is never a guess.",
     },
     {
         icon: Eye,
-        title: "Code Reviews & QA",
-        description: "Quality checklist and review process built in",
+        title: "Production-quality, not “it works”",
+        description: "Reviews, edge cases, and quality checks built into delivery.",
     },
     {
         icon: MessageCircle,
-        title: "Single Point of Contact",
-        description: "Dedicated communication channel for clarity",
+        title: "No communication chaos",
+        description: "One accountable point of contact from start to delivery.",
     },
     {
         icon: Shield,
-        title: "NDA Available",
-        description: "Confidentiality agreements for sensitive projects",
+        title: "Your idea stays yours",
+        description: "NDAs available for sensitive or early-stage ideas.",
     },
     {
         icon: FileKey,
-        title: "Full IP Ownership",
-        description: "You own 100% of the code and assets upon delivery",
+        title: "You own everything",
+        description: "100% ownership of code and assets on delivery.",
     },
 ];
 
@@ -63,7 +68,7 @@ const itemVariants: Variants = {
     },
 };
 
-export default function QualityControls() {
+export default function QualityControls({ onBookCall }: QualityControlsProps) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -79,13 +84,13 @@ export default function QualityControls() {
                 >
                     <motion.div variants={itemVariants} className="text-center mb-12">
                         <span className="inline-block text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-4">
-                            Quality & Risk Controls
+                            Quality & Execution Confidence
                         </span>
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Built for enterprise confidence
+                            Built to remove execution risk
                         </h2>
                         <p className="text-gray-400">
-                            Process safeguards that remove fear and ensure predictable outcomes.
+                            Everything you worry about — scope, quality, ownership, and communication — is handled upfront.
                         </p>
                     </motion.div>
 
@@ -110,6 +115,21 @@ export default function QualityControls() {
                                 </div>
                             </motion.div>
                         ))}
+                    </motion.div>
+
+                    <motion.div
+                        variants={itemVariants}
+                        className="mt-16 text-center"
+                    >
+                        <p className="text-lg text-white font-medium mb-4">
+                            This is why most clients come to us with just an idea — and leave with something real.
+                        </p>
+                        <button
+                            onClick={onBookCall}
+                            className="inline-flex items-center gap-2 text-indigo-400 font-semibold hover:text-indigo-300 transition-colors text-lg"
+                        >
+                            Something in mind? Let’s make it real. <ArrowRight className="w-5 h-5" />
+                        </button>
                     </motion.div>
                 </motion.div>
             </div>
