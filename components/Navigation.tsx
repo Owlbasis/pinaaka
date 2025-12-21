@@ -31,7 +31,7 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
     }, []);
 
     return (
-        <nav className={`nav ${isScrolled ? "scrolled shadow-md" : "bg-transparent"}`}>
+        <header className={`nav ${isScrolled ? "scrolled shadow-md" : "bg-transparent"}`}>
             <div className="container">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
@@ -48,7 +48,7 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                     </Link>
 
                     {/* Desktop Nav */}
-                    <div className="hidden md:flex items-center gap-8">
+                    <nav className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
@@ -58,7 +58,7 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                                 {link.label}
                             </Link>
                         ))}
-                    </div>
+                    </nav>
 
                     {/* CTAs */}
                     <div className="hidden md:flex items-center gap-3">
@@ -89,7 +89,7 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                         exit={{ opacity: 0, height: 0 }}
                         className="md:hidden bg-[#0B1120] border-b border-white/5 overflow-hidden"
                     >
-                        <div className="px-4 py-6 flex flex-col gap-4">
+                        <nav className="px-4 py-6 flex flex-col gap-4">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.href}
@@ -114,10 +114,10 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                                     Book a Call
                                 </button>
                             </div>
-                        </div>
+                        </nav>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </nav>
+        </header>
     );
 }

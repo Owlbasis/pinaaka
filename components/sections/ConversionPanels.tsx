@@ -23,6 +23,7 @@ export default function ConversionPanels({ onBookCall, onApplyTalent }: Conversi
                     transition={{ duration: 0.5 }}
                     className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto"
                 >
+                    <h2 className="sr-only">Get Started</h2>
                     {/* Companies Panel */}
                     <div className="card p-6 md:p-8">
                         <h3 className="text-xl font-bold mb-2">Something in mind? Let’s make it real.</h3>
