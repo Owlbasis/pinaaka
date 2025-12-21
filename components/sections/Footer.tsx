@@ -28,7 +28,7 @@ export default function Footer() {
                     </div>
 
                     {/* Links */}
-                    <div className="flex flex-wrap justify-center gap-6 text-sm">
+                    <nav aria-label="Footer Navigation" className="flex flex-wrap justify-center gap-6 text-sm">
                         <Link href="#why" className="text-gray-400 hover:text-white transition-colors">
                             Why Us
                         </Link>
@@ -41,7 +41,7 @@ export default function Footer() {
                         <Link href="#pricing" className="text-gray-400 hover:text-white transition-colors">
                             Pricing
                         </Link>
-                    </div>
+                    </nav>
 
                     {/* Contact & Social */}
                     <div className="flex flex-col items-center md:items-end gap-4">
