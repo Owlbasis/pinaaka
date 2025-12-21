@@ -8,7 +8,8 @@ import {
     Eye,
     MessageCircle,
     Shield,
-    RefreshCw
+    RefreshCw,
+    FileKey
 } from "lucide-react";
 
 const qualityPoints = [
@@ -38,9 +39,9 @@ const qualityPoints = [
         description: "Confidentiality agreements for sensitive projects",
     },
     {
-        icon: RefreshCw,
-        title: "Replacement Policy",
-        description: "Quick talent swap if the fit isn't right",
+        icon: FileKey,
+        title: "Full IP Ownership",
+        description: "You own 100% of the code and assets upon delivery",
     },
 ];
 

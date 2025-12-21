@@ -66,7 +66,7 @@ export default function Pricing() {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     return (
-        <section id="pricing" className="section bg-gradient-to-b from-[#0a0f1c]/50 to-transparent">
+        <section id="pricing" className="section bg-gradient-to-b from-[var(--bg-primary)] to-transparent">
             <div className="container">
                 <motion.div
                     ref={ref}
@@ -77,7 +77,7 @@ export default function Pricing() {
                 >
                     <motion.span
                         variants={itemVariants}
-                        className="inline-block text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-4"
+                        className="inline-block text-blue-400 text-sm font-semibold uppercase tracking-widest mb-4"
                     >
                         Pricing
                     </motion.span>
@@ -89,29 +89,9 @@ export default function Pricing() {
                     </motion.h2>
                     <motion.p
                         variants={itemVariants}
-                        className="text-gray-400 max-w-2xl mx-auto mb-12"
+                        className="text-[var(--text-secondary)] max-w-2xl mx-auto mb-12"
                     >
                         Transparent pricing. Final rate confirmed after scope review.
-                    </motion.p>
-                </motion.div>
-
-                <motion.div
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    variants={containerVariants}
-                    className="text-center mb-16"
-                >
-                    <motion.h3
-                        variants={itemVariants}
-                        className="text-xl font-semibold mb-2"
-                    >
-                        Engagement Models
-                    </motion.h3>
-                    <motion.p
-                        variants={itemVariants}
-                        className="text-gray-500 text-sm"
-                    >
-                        Choose the engagement that fits your project needs
                     </motion.p>
                 </motion.div>
 
@@ -125,54 +105,37 @@ export default function Pricing() {
                         <motion.div
                             key={index}
                             variants={itemVariants}
-                            className={`relative rounded-2xl p-8 ${model.highlighted
-                                    ? "bg-gradient-to-b from-indigo-500/20 to-purple-500/10 border-2 border-indigo-500/50"
-                                    : "bg-white/[0.02] border border-white/10"
+                            className={`relative rounded-2xl p-8 transition-all duration-300 ${model.highlighted
+                                ? "bg-[var(--bg-secondary)] border-2 border-blue-500/50 shadow-xl shadow-blue-500/10 scale-105 z-10"
+                                : "bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)]"
                                 }`}
                         >
                             {model.highlighted && (
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full text-xs font-semibold">
+                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full text-xs font-bold text-white shadow-lg">
                                     Most Popular
                                 </div>
                             )}
 
-                            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${model.highlighted
-                                    ? "bg-gradient-to-br from-indigo-500 to-purple-500"
-                                    : "bg-white/5 border border-white/10"
+                            <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${model.highlighted
+                                ? "bg-blue-500/10 text-blue-400"
+                                : "bg-white/5 text-slate-400"
                                 }`}>
-                                <model.icon className={`w-7 h-7 ${model.highlighted ? "text-white" : "text-gray-400"}`} />
+                                <model.icon className="w-7 h-7" />
                             </div>
 
                             <h3 className="text-2xl font-bold mb-1">{model.title}</h3>
-                            <p className="text-gray-500 text-sm mb-6">{model.description}</p>
+                            <p className="text-[var(--text-secondary)] text-sm mb-6">{model.description}</p>
 
                             <ul className="space-y-3">
                                 {model.features.map((feature, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-sm text-gray-300">
-                                        <Check className={`w-4 h-4 flex-shrink-0 ${model.highlighted ? "text-indigo-400" : "text-gray-500"}`} />
+                                    <li key={i} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
+                                        <Check className={`w-4 h-4 flex-shrink-0 ${model.highlighted ? "text-blue-400" : "text-green-500"}`} />
                                         {feature}
                                     </li>
                                 ))}
                             </ul>
                         </motion.div>
                     ))}
-                </motion.div>
-
-                {/* Talent Compensation Note */}
-                <motion.div
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    variants={containerVariants}
-                    className="mt-16 text-center"
-                >
-                    <motion.div
-                        variants={itemVariants}
-                        className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-green-500/10 border border-green-500/20"
-                    >
-                        <span className="text-sm text-green-400">
-                            💰 Talent earns: Fixed monthly base + optional project incentives
-                        </span>
-                    </motion.div>
                 </motion.div>
             </div>
         </section>

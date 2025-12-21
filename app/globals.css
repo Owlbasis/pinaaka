@@ -2,36 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== REFINED DESIGN SYSTEM ===== */
+/* ===== PROFESSIONAL DESIGN SYSTEM ===== */
 
 :root {
-  /* Lighter, warmer dark palette */
-  --bg-primary: #0f1419;
-  --bg-secondary: #15202b;
-  --bg-tertiary: #1c2938;
-  --bg-card: rgba(28, 41, 56, 0.7);
+  /* Professional Dark Theme - 'Midnight Slate' */
+  --bg-primary: #0B1120;
+  --bg-secondary: #1E293B;
+  --bg-tertiary: #334155;
+  --bg-card: rgba(30, 41, 59, 0.7);
 
-  /* Cleaner accent - single brand color */
-  --accent-primary: #1d9bf0;
-  --accent-secondary: #7856ff;
-  --accent-green: #00ba7c;
+  /* Trust & Action Accents */
+  --accent-primary: #3B82F6; /* Royal Blue */
+  --accent-secondary: #6366F1; /* Indigo */
+  --accent-success: #10B981; /* Emerald */
+  
+  /* Refined Text Colors */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
 
-  /* Better text contrast */
-  --text-primary: #e7e9ea;
-  --text-secondary: #8b98a5;
-  --text-muted: #6e7681;
+  /* Subtle Borders */
+  --border-subtle: rgba(148, 163, 184, 0.1);
+  --border-accent: rgba(59, 130, 246, 0.5);
 
-  /* Borders with more visibility */
-  --border-subtle: rgba(255, 255, 255, 0.12);
-  --border-accent: rgba(29, 155, 240, 0.4);
+  /* Modern Gradients */
+  --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #6366F1 100%);
+  --gradient-glow: radial-gradient(circle at center, rgba(59, 130, 246, 0.15), transparent 70%);
 
-  /* Simplified gradients */
-  --gradient-primary: linear-gradient(135deg, #1d9bf0 0%, #7856ff 100%);
-  --gradient-green: linear-gradient(135deg, #00ba7c 0%, #00d084 100%);
-
-  /* Spacing */
-  --section-padding: clamp(4rem, 8vw, 6rem);
-  --container-max: 1200px;
+  /* Spacing & Layout */
+  --section-padding: clamp(5rem, 10vw, 8rem);
+  --container-max: 1280px;
 }
 
 /* ===== BASE STYLES ===== */
@@ -50,6 +50,7 @@ body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -61,21 +62,22 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
   color: #fff;
 }
 
 h1 {
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
 }
 
 h2 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: clamp(2rem, 4vw, 3rem);
 }
 
 h3 {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
 }
 
 .text-gradient {
@@ -85,7 +87,7 @@ h3 {
   background-clip: text;
 }
 
-/* ===== UTILITY CLASSES ===== */
+/* ===== LAYOUT & UTILITIES ===== */
 
 .container {
   width: 100%;
@@ -101,8 +103,9 @@ h3 {
   padding-bottom: var(--section-padding);
 }
 
-/* ===== CARDS ===== */
+/* ===== COMPONENTS ===== */
 
+/* Glass Card */
 .glass {
   background: var(--bg-card);
   backdrop-filter: blur(12px);
@@ -111,30 +114,31 @@ h3 {
   border-radius: 1rem;
 }
 
+/* Standard Card */
 .card {
   background: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
   border-radius: 1rem;
-  padding: 1.5rem;
-  transition: all 0.2s ease;
+  padding: 2rem;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
   border-color: var(--border-accent);
-  background: var(--bg-tertiary);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
-/* ===== BUTTONS ===== */
-
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.938rem;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  border-radius: 9999px;
+  border-radius: 0.5rem; /* Rounded rect instead of pill for more corporate feel? Or keep pill? Let's go moderate rounded */
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
@@ -145,21 +149,23 @@ h3 {
 .btn-primary {
   background: var(--accent-primary);
   color: white;
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
 }
 
 .btn-primary:hover {
-  background: #1a8cd8;
+  background: #2563EB;
   transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.23);
 }
 
 .btn-secondary {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.05);
   color: var(--text-primary);
   border: 1px solid var(--border-subtle);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);
   border-color: var(--text-secondary);
 }
 
@@ -174,26 +180,24 @@ h3 {
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* ===== ICON BOX ===== */
-
+/* Icon Box */
 .icon-box {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  background: rgba(29, 155, 240, 0.1);
+  width: 3.5rem;
+  height: 3.5rem;
+  background: rgba(59, 130, 246, 0.1);
   border-radius: 0.75rem;
   color: var(--accent-primary);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-/* ===== FORMS ===== */
-
+/* Inputs */
 .input {
   width: 100%;
-  padding: 0.75rem 1rem;
-  background: var(--bg-tertiary);
+  padding: 0.875rem 1rem;
+  background: var(--bg-primary);
   border: 1px solid var(--border-subtle);
   border-radius: 0.5rem;
   color: var(--text-primary);
@@ -204,127 +208,73 @@ h3 {
 .input:focus {
   outline: none;
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(29, 155, 240, 0.15);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
 .input::placeholder {
   color: var(--text-muted);
 }
 
-.textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.select {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%238b98a5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.75rem center;
-  background-repeat: no-repeat;
-  background-size: 1.25rem;
-  padding-right: 2.5rem;
-}
-
-.label {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
-}
-
-/* ===== NAVIGATION ===== */
-
+/* Navigation */
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 1rem 0;
-  transition: all 0.2s ease;
+  padding: 1.25rem 0;
+  transition: all 0.3s ease;
 }
 
 .nav.scrolled {
-  background: rgba(15, 20, 25, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(11, 17, 32, 0.85); /* Matches bg-primary */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
+  padding: 1rem 0;
 }
 
-/* ===== ANIMATIONS ===== */
-
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
+/* Animation Utilities */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
-@keyframes pulse-glow {
-
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-
-  50% {
-    opacity: 0.6;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-float {
-  animation: float 5s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
-}
-
-/* ===== RESPONSIVE ===== */
-
+/* Responsive */
 @media (max-width: 768px) {
   :root {
-    --section-padding: 3rem;
-  }
-
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    --section-padding: 4rem;
   }
 }
 
-/* ===== SCROLLBAR ===== */
-
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--bg-tertiary);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+  background: var(--text-secondary);
 }
 
-/* ===== MODAL ===== */
-
+/* Modals */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -336,8 +286,9 @@ h3 {
   background: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
   border-radius: 1rem;
-  max-width: 500px;
+  max-width: 550px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }

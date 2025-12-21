@@ -2,13 +2,13 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X, Mountain } from "lucide-react";
 import Link from "next/link";
 
 const navLinks = [
     { href: "#why", label: "Why Us" },
     { href: "#services", label: "Services" },
-    { href: "#how-it-works", label: "How It Works" },
+    { href: "#how-it-works", label: "Process" },
     { href: "#pricing", label: "Pricing" },
 ];
 
@@ -23,22 +23,22 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
+            setIsScrolled(window.scrollY > 20);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     return (
-        <nav className={`nav ${isScrolled ? "scrolled" : ""}`}>
+        <nav className={`nav ${isScrolled ? "scrolled shadow-md" : "bg-transparent"}`}>
             <div className="container">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center">
-                            <Zap className="w-5 h-5 text-white" />
+                    <Link href="/" className="flex items-center gap-2.5 group">
+                        <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-white/10 text-white overflow-hidden group-hover:bg-white/20 transition-colors">
+                            <Mountain className="w-5 h-5 fill-current" />
                         </div>
-                        <span className="text-xl font-bold text-white">TalentBridge</span>
+                        <span className="text-lg font-bold text-white tracking-tight">Charcoal Labs</span>
                     </Link>
 
                     {/* Desktop Nav */}
@@ -47,7 +47,7 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="text-gray-400 hover:text-white transition-colors text-sm font-medium"
+                                className="text-slate-400 hover:text-white transition-colors text-sm font-medium"
                             >
                                 {link.label}
                             </Link>
@@ -55,18 +55,18 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                     </div>
 
                     {/* CTAs */}
-                    <div className="hidden md:flex items-center gap-4">
-                        <button onClick={onApplyTalent} className="btn btn-ghost text-sm">
-                            Apply as Talent
+                    <div className="hidden md:flex items-center gap-3">
+                        <button onClick={onApplyTalent} className="text-sm font-medium text-slate-400 hover:text-white transition-colors px-3 py-2">
+                            For Talent
                         </button>
-                        <button onClick={onBookCall} className="btn btn-primary text-sm">
+                        <button onClick={onBookCall} className="btn btn-primary h-9 px-4 text-sm shadow-sm opacity-90 hover:opacity-100">
                             Book a Call
                         </button>
                     </div>
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="md:hidden text-white p-2"
+                        className="md:hidden text-slate-300 p-1"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
                         {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -81,32 +81,33 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-[#0a0f1c] border-t border-white/10"
+                        className="md:hidden bg-[#0B1120] border-b border-white/5 overflow-hidden"
                     >
-                        <div className="container py-4 flex flex-col gap-4">
+                        <div className="px-4 py-6 flex flex-col gap-4">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.href}
                                     href={link.href}
-                                    className="text-gray-300 hover:text-white py-2"
+                                    className="text-lg font-medium text-slate-300 hover:text-white py-2 border-b border-white/5"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {link.label}
                                 </Link>
                             ))}
-                            <hr className="border-white/10" />
-                            <button
-                                onClick={() => { onApplyTalent(); setIsMobileMenuOpen(false); }}
-                                className="btn btn-secondary w-full"
-                            >
-                                Apply as Talent
-                            </button>
-                            <button
-                                onClick={() => { onBookCall(); setIsMobileMenuOpen(false); }}
-                                className="btn btn-primary w-full"
-                            >
-                                Book a Call
-                            </button>
+                            <div className="flex flex-col gap-3 mt-4">
+                                <button
+                                    onClick={() => { onApplyTalent(); setIsMobileMenuOpen(false); }}
+                                    className="btn btn-secondary w-full justify-center"
+                                >
+                                    For Talent
+                                </button>
+                                <button
+                                    onClick={() => { onBookCall(); setIsMobileMenuOpen(false); }}
+                                    className="btn btn-primary w-full justify-center"
+                                >
+                                    Book a Call
+                                </button>
+                            </div>
                         </div>
                     </motion.div>
                 )}
