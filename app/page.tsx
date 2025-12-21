@@ -43,7 +43,7 @@ export default function Home() {
       <ProjectTypes />
       <HowItWorks />
       <Pricing />
-      <QualityControls />
+      <QualityControls onBookCall={openCalendar} />
       <ConversionPanels
         onBookCall={openCalendar}
         onApplyTalent={openTalentForm}
