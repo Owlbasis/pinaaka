@@ -2,42 +2,45 @@
 
 import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
-import { Clock, Target, CalendarRange, Check } from "lucide-react";
+import { Clock, Target, CalendarRange, Check, ArrowRight } from "lucide-react";
+
+interface PricingProps {
+    onBookCall?: () => void;
+}
 
 const pricingModels = [
     {
         icon: Clock,
-        title: "Hourly",
+        title: "Exploration & R&D (Hourly)",
         description: "Best for evolving scope",
         features: [
-            "Flexible hours allocation",
-            "Weekly billing cycles",
-            "Scale up or down easily",
-            "Ideal for R&D phases",
+            "Flexible capacity as needs evolve",
+            "Weekly progress check-ins",
+            "Ideal for discovery, experiments, and unknowns",
         ],
         highlighted: false,
     },
     {
         icon: Target,
-        title: "Fixed Scope",
+        title: "Defined Scope Delivery",
         description: "Best for clear deliverables",
         features: [
-            "Defined milestones",
-            "Predictable budget",
+            "Clearly defined milestones",
+            "Predictable budget and timelines",
             "Clear acceptance criteria",
-            "Payment on delivery",
+            "Payment tied to delivery",
         ],
         highlighted: true,
     },
     {
         icon: CalendarRange,
-        title: "Monthly Retainer",
+        title: "Long-term Partnership (Retainer)",
         description: "Best for ongoing work",
         features: [
-            "Dedicated capacity",
-            "Priority support",
-            "Feature iterations",
-            "Maintenance included",
+            "Dedicated engineering capacity",
+            "Ongoing feature development",
+            "Priority support and maintenance",
+            "Continuous improvements",
         ],
         highlighted: false,
     },
@@ -61,7 +64,7 @@ const itemVariants: Variants = {
     },
 };
 
-export default function Pricing() {
+export default function Pricing({ onBookCall }: PricingProps) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -85,13 +88,13 @@ export default function Pricing() {
                         variants={itemVariants}
                         className="text-3xl md:text-5xl font-bold mb-2"
                     >
-                        Starting at <span className="text-gradient">$10/hour</span>
+                        Pricing based on scope, not guesses
                     </motion.h2>
                     <motion.p
                         variants={itemVariants}
                         className="text-[var(--text-secondary)] max-w-2xl mx-auto mb-12"
                     >
-                        Transparent pricing. Final rate confirmed after scope review.
+                        Transparent pricing. Final cost confirmed after a short scope discussion.
                     </motion.p>
                 </motion.div>
 
@@ -136,6 +139,23 @@ export default function Pricing() {
                             </ul>
                         </motion.div>
                     ))}
+                </motion.div>
+
+                <motion.div
+                    variants={itemVariants}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                    className="mt-16 text-center"
+                >
+                    <p className="text-lg text-[var(--text-secondary)] mb-4">
+                        Most teams spend 15–30 minutes with us to scope their needs before any pricing is finalized.
+                    </p>
+                    <button
+                        onClick={onBookCall}
+                        className="inline-flex items-center gap-2 text-indigo-400 font-semibold hover:text-indigo-300 transition-colors text-lg"
+                    >
+                        Book a Strategy Call <ArrowRight className="w-5 h-5" />
+                    </button>
                 </motion.div>
             </div>
         </section>

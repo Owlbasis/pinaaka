@@ -43,7 +43,7 @@ export default function Home() {
       <WhatWeOffer />
       <ProjectTypes />
       <HowItWorks />
-      <Pricing />
+      <Pricing onBookCall={openCalendar} />
       <QualityControls onBookCall={openCalendar} />
       <Testimonials onBookCall={openCalendar} />
       <ConversionPanels
