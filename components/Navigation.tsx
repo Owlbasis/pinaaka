@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useBooking } from "@/components/providers/BookingProvider";
 
 const navLinks = [
     { href: "#why", label: "Why Us" },
@@ -13,12 +14,8 @@ const navLinks = [
     { href: "#pricing", label: "Pricing" },
 ];
 
-interface NavigationProps {
-    onBookCall: () => void;
-    onApplyTalent: () => void;
-}
-
-export default function Navigation({ onBookCall, onApplyTalent }: NavigationProps) {
+export default function Navigation() {
+    const { openCalendar, openTalentForm } = useBooking();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -60,12 +57,13 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                         ))}
                     </nav>
 
+
                     {/* CTAs */}
                     <div className="hidden md:flex items-center gap-3">
-                        <button onClick={onApplyTalent} className="text-sm font-medium text-slate-400 hover:text-white transition-colors px-3 py-2">
+                        <button onClick={openTalentForm} className="text-sm font-medium text-slate-400 hover:text-white transition-colors px-3 py-2">
                             For Talent
                         </button>
-                        <button onClick={onBookCall} className="btn btn-primary h-9 px-4 text-sm shadow-sm opacity-90 hover:opacity-100">
+                        <button onClick={openCalendar} className="btn btn-primary h-9 px-4 text-sm shadow-sm opacity-90 hover:opacity-100">
                             Book a Call
                         </button>
                     </div>
@@ -102,13 +100,13 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                             ))}
                             <div className="flex flex-col gap-3 mt-4">
                                 <button
-                                    onClick={() => { onApplyTalent(); setIsMobileMenuOpen(false); }}
+                                    onClick={() => { openTalentForm(); setIsMobileMenuOpen(false); }}
                                     className="btn btn-secondary w-full justify-center"
                                 >
                                     For Talent
                                 </button>
                                 <button
-                                    onClick={() => { onBookCall(); setIsMobileMenuOpen(false); }}
+                                    onClick={() => { openCalendar(); setIsMobileMenuOpen(false); }}
                                     className="btn btn-primary w-full justify-center"
                                 >
                                     Book a Call

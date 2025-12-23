@@ -3,13 +3,10 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Calendar, ArrowRight, User } from "lucide-react";
+import { useBooking } from "@/components/providers/BookingProvider";
 
-interface ConversionPanelsProps {
-    onBookCall: () => void;
-    onApplyTalent: () => void;
-}
-
-export default function ConversionPanels({ onBookCall, onApplyTalent }: ConversionPanelsProps) {
+export default function ConversionPanels() {
+    const { openCalendar, openTalentForm } = useBooking();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -30,7 +27,7 @@ export default function ConversionPanels({ onBookCall, onApplyTalent }: Conversi
                         <p className="text-[var(--text-secondary)] text-sm mb-6">
                             Book a call and get a scoped plan within 24–48 hours.
                         </p>
-                        <button onClick={onBookCall} className="btn btn-primary">
+                        <button onClick={openCalendar} className="btn btn-primary">
                             <Calendar className="w-4 h-4" />
                             Book a Call
                             <ArrowRight className="w-4 h-4" />
@@ -44,7 +41,7 @@ export default function ConversionPanels({ onBookCall, onApplyTalent }: Conversi
                             Apply with your skills and portfolio. Get matched to scoped work.
                         </p>
                         <button
-                            onClick={onApplyTalent}
+                            onClick={openTalentForm}
                             className="btn text-white"
                             style={{ background: 'var(--accent-green)' }}
                         >

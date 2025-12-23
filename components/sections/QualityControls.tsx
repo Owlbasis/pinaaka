@@ -12,10 +12,7 @@ import {
     FileKey,
     ArrowRight
 } from "lucide-react";
-
-interface QualityControlsProps {
-    onBookCall: () => void;
-}
+import { useBooking } from "@/components/providers/BookingProvider";
 
 const qualityPoints = [
     {
@@ -68,7 +65,8 @@ const itemVariants: Variants = {
     },
 };
 
-export default function QualityControls({ onBookCall }: QualityControlsProps) {
+export default function QualityControls() {
+    const { openCalendar } = useBooking();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -125,7 +123,7 @@ export default function QualityControls({ onBookCall }: QualityControlsProps) {
                             This is why most clients come to us with just an idea — and leave with something real.
                         </p>
                         <button
-                            onClick={onBookCall}
+                            onClick={openCalendar}
                             className="inline-flex items-center gap-2 text-indigo-400 font-semibold hover:text-indigo-300 transition-colors text-lg"
                         >
                             Something in mind? Let’s make it real. <ArrowRight className="w-5 h-5" />

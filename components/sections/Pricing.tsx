@@ -3,10 +3,7 @@
 import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
 import { Clock, Target, CalendarRange, Check, ArrowRight } from "lucide-react";
-
-interface PricingProps {
-    onBookCall?: () => void;
-}
+import { useBooking } from "@/components/providers/BookingProvider";
 
 const pricingModels = [
     {
@@ -64,7 +61,8 @@ const itemVariants: Variants = {
     },
 };
 
-export default function Pricing({ onBookCall }: PricingProps) {
+export default function Pricing() {
+    const { openCalendar } = useBooking();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -151,7 +149,7 @@ export default function Pricing({ onBookCall }: PricingProps) {
                         Most teams spend 15–30 minutes with us to scope their needs before any pricing is finalized.
                     </p>
                     <button
-                        onClick={onBookCall}
+                        onClick={openCalendar}
                         className="inline-flex items-center gap-2 text-indigo-400 font-semibold hover:text-indigo-300 transition-colors text-lg"
                     >
                         Book a Strategy Call <ArrowRight className="w-5 h-5" />

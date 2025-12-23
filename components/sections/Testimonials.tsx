@@ -4,10 +4,7 @@ import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
 import { Quote, ArrowRight, Linkedin } from "lucide-react";
 import Image from "next/image";
-
-interface TestimonialsProps {
-    onBookCall: () => void;
-}
+import { useBooking } from "@/components/providers/BookingProvider";
 
 const testimonials = [
     {
@@ -51,7 +48,8 @@ const itemVariants: Variants = {
     },
 };
 
-export default function Testimonials({ onBookCall }: TestimonialsProps) {
+export default function Testimonials() {
+    const { openCalendar } = useBooking();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -133,7 +131,7 @@ export default function Testimonials({ onBookCall }: TestimonialsProps) {
                             Different industries. Same experience — clarity, ownership, and delivery.
                         </p>
                         <button
-                            onClick={onBookCall}
+                            onClick={openCalendar}
                             className="inline-flex items-center gap-2 text-indigo-400 font-semibold hover:text-indigo-300 transition-colors text-lg"
                         >
                             Something in mind? Let’s make it real. <ArrowRight className="w-5 h-5" />

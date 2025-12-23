@@ -4,10 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
-interface HeroProps {
-    onBookCall: () => void;
-    onApplyTalent: () => void;
-}
+import { useBooking } from "@/components/providers/BookingProvider";
 
 const flippingStatements = [
     { left: "MVP", right: "Production" },
@@ -18,7 +15,8 @@ const flippingStatements = [
     { left: "AI", right: "Automation" },
 ];
 
-export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
+export default function Hero() {
+    const { openCalendar, openTalentForm } = useBooking();
     const [statementIndex, setStatementIndex] = useState(0);
 
     useEffect(() => {
@@ -106,7 +104,7 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
                         className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
                     >
                         <button
-                            onClick={onBookCall}
+                            onClick={openCalendar}
                             aria-label="Book a strategy call with Charcoal Labs"
                             className="btn btn-primary w-full sm:w-auto h-12 px-8 text-base shadow-lg shadow-blue-500/25 ring-1 ring-white/10"
                         >
@@ -114,7 +112,7 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
                             <ArrowRight className="w-4 h-4" />
                         </button>
                         <button
-                            onClick={onApplyTalent}
+                            onClick={openTalentForm}
                             aria-label="Apply to join the Charcoal Labs talent network"
                             className="btn btn-secondary w-full sm:w-auto h-12 px-8 text-base bg-white/5 hover:bg-white/10"
                         >
