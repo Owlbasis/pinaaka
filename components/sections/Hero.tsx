@@ -107,6 +107,7 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
                     >
                         <button
                             onClick={onBookCall}
+                            aria-label="Book a strategy call with Charcoal Labs"
                             className="btn btn-primary w-full sm:w-auto h-12 px-8 text-base shadow-lg shadow-blue-500/25 ring-1 ring-white/10"
                         >
                             Book a Strategy Call
@@ -114,6 +115,7 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
                         </button>
                         <button
                             onClick={onApplyTalent}
+                            aria-label="Apply to join the Charcoal Labs talent network"
                             className="btn btn-secondary w-full sm:w-auto h-12 px-8 text-base bg-white/5 hover:bg-white/10"
                         >
                             Join Talent Network

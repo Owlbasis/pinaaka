@@ -53,11 +53,22 @@ export default function Footer() {
                             hello@charcoallabs.com
                         </a>
                         <div className="flex items-center gap-4">
-                            <a href="https://www.linkedin.com/in/charcoal-labs-a085663a1/" className="text-gray-500 hover:text-white transition-colors">
+                            <a
+                                href="https://www.linkedin.com/in/charcoal-labs-a085663a1/"
+                                className="text-gray-500 hover:text-white transition-colors"
+                                aria-label="Follow us on LinkedIn"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 <Linkedin className="w-5 h-5" />
                             </a>
-                            <a href="https://x.com/CharcoalLabs" className="text-gray-500 hover:text-white transition-colors">
-                                {/* X icon (using text for now as Lucide might not have direct X icon in older versions, or just use a custom SVG if needed. Let's try to see if Lucide has an X icon or just use a placeholder if unsure. Wait, the user asked for X.com logo. I'll use a simple SVG or text if Lucide doesn't fail me, but replacing Twitter with X is safer.) */}
+                            <a
+                                href="https://x.com/CharcoalLabs"
+                                className="text-gray-500 hover:text-white transition-colors"
+                                aria-label="Follow us on X (Twitter)"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" aria-hidden="true">
                                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                                 </svg>

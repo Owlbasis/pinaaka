@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     shortcut: "/logo.png",
     apple: "/logo.png",
   },
+  manifest: "/manifest.json",
   openGraph: {
     title: "MVP & Product Development Company | Charcoal Labs",
     description: "Get scoped projects delivered by vetted, AI-enabled talent. Starting at $10/hour.",
@@ -32,10 +33,10 @@ export const metadata: Metadata = {
     siteName: "Charcoal Labs",
     images: [
       {
-        url: "/logo.png",
-        width: 800,
-        height: 600,
-        alt: "Charcoal Labs Logo",
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Charcoal Labs - Ship production code with vetted engineers",
       },
     ],
     type: "website",
@@ -44,19 +45,40 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MVP & Product Development Company | Charcoal Labs",
     description: "Get scoped projects delivered by vetted, AI-enabled talent. Starting at $10/hour.",
-    images: ["/logo.png"],
+    images: ["/og-image.png"],
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Charcoal Labs",
-  "url": "https://www.charcoallabs.com",
-  "logo": "https://www.charcoallabs.com/logo.png",
-  "sameAs": [
-    "https://www.linkedin.com/in/charcoal-labs-a085663a1/",
-    "https://x.com/CharcoalLabs"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.charcoallabs.com/#organization",
+      "name": "Charcoal Labs",
+      "url": "https://www.charcoallabs.com",
+      "logo": "https://www.charcoallabs.com/logo.png",
+      "description": "Ship production code with vetted engineers. MVP & Product Development starting at $10/hour.",
+      "sameAs": [
+        "https://www.linkedin.com/in/charcoal-labs-a085663a1/",
+        "https://x.com/CharcoalLabs"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.charcoallabs.com/#website",
+      "name": "Charcoal Labs",
+      "url": "https://www.charcoallabs.com",
+      "publisher": { "@id": "https://www.charcoallabs.com/#organization" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.charcoallabs.com/#service",
+      "serviceType": "Software Development",
+      "provider": { "@id": "https://www.charcoallabs.com/#organization" },
+      "description": "Scoped project delivery, talent matching, architecture support, and maintenance services.",
+      "areaServed": "Worldwide"
+    }
   ]
 };
 
@@ -68,6 +90,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
         <Script
           id="microsoft-clarity"
           strategy="afterInteractive"
