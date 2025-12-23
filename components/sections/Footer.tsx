@@ -46,11 +46,11 @@ export default function Footer() {
                     {/* Contact & Social */}
                     <div className="flex flex-col items-center md:items-end gap-4">
                         <a
-                            href="mailto:hellocharcoallabs@gmail.com"
+                            href="mailto:hello@charcoallabs.com"
                             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
                         >
                             <Mail className="w-4 h-4" />
-                            hellocharcoallabs@gmail.com
+                            hello@charcoallabs.com
                         </a>
                         <div className="flex items-center gap-4">
                             <a href="https://www.linkedin.com/in/charcoal-labs-a085663a1/" className="text-gray-500 hover:text-white transition-colors">
