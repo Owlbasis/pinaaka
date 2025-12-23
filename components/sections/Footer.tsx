@@ -67,12 +67,8 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom */}
-                <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+                <div className="mt-12 pt-8 border-t border-white/5 text-center text-sm text-gray-500">
                     <p>© {new Date().getFullYear()} Charcoal Labs. All rights reserved.</p>
-                    <div className="flex gap-6">
-                        <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-                        <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
-                    </div>
                 </div>
             </div>
         </footer>
