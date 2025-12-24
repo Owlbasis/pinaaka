@@ -10,6 +10,7 @@ import HowItWorks from "@/components/sections/HowItWorks";
 import Pricing from "@/components/sections/Pricing";
 import QualityControls from "@/components/sections/QualityControls";
 import Testimonials from "@/components/sections/Testimonials";
+import FAQ from "@/components/sections/FAQ";
 import ConversionPanels from "@/components/sections/ConversionPanels";
 import Footer from "@/components/sections/Footer";
 import CalendarModal from "@/components/CalendarModal";
@@ -46,6 +47,7 @@ export default function Home() {
       <Pricing onBookCall={openCalendar} />
       <QualityControls onBookCall={openCalendar} />
       <Testimonials onBookCall={openCalendar} />
+      <FAQ />
       <ConversionPanels
         onBookCall={openCalendar}
         onApplyTalent={openTalentForm}
