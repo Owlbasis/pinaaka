@@ -2,49 +2,13 @@
 
 import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
-import { Clock, Target, CalendarRange, Check, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface PricingProps {
     onBookCall?: () => void;
 }
 
-const pricingModels = [
-    {
-        icon: Clock,
-        title: "Exploration & R&D (Hourly)",
-        description: "Best for evolving scope",
-        features: [
-            "Flexible capacity as needs evolve",
-            "Weekly progress check-ins",
-            "Ideal for discovery, experiments, and unknowns",
-        ],
-        highlighted: false,
-    },
-    {
-        icon: Target,
-        title: "Defined Scope Delivery",
-        description: "Best for clear deliverables",
-        features: [
-            "Clearly defined milestones",
-            "Predictable budget and timelines",
-            "Clear acceptance criteria",
-            "Payment tied to delivery",
-        ],
-        highlighted: true,
-    },
-    {
-        icon: CalendarRange,
-        title: "Long-term Partnership (Retainer)",
-        description: "Best for ongoing work",
-        features: [
-            "Dedicated engineering capacity",
-            "Ongoing feature development",
-            "Priority support and maintenance",
-            "Continuous improvements",
-        ],
-        highlighted: false,
-    },
-];
+
 
 const containerVariants: Variants = {
     hidden: {},
@@ -68,6 +32,20 @@ export default function Pricing({ onBookCall }: PricingProps) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+    const engagementPaths = [
+        {
+            title: "When things aren’t fully clear yet",
+            description: "We start by exploring the problem and shaping the right direction.",
+            highlighted: false,
+        },
+        {
+            title: "When you know what needs to be built",
+            description: "We define the scope upfront and deliver it end to end.",
+            highlighted: true,
+            badge: "Most common"
+        }
+    ];
+
     return (
         <section id="pricing" className="section bg-gradient-to-b from-[var(--bg-primary)] to-transparent">
             <div className="container">
@@ -76,7 +54,7 @@ export default function Pricing({ onBookCall }: PricingProps) {
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     variants={containerVariants}
-                    className="text-center mb-6"
+                    className="text-center mb-12"
                 >
                     <motion.span
                         variants={itemVariants}
@@ -86,15 +64,15 @@ export default function Pricing({ onBookCall }: PricingProps) {
                     </motion.span>
                     <motion.h2
                         variants={itemVariants}
-                        className="text-3xl md:text-5xl font-bold mb-2"
+                        className="text-3xl md:text-5xl font-bold mb-4"
                     >
                         Pricing based on scope, not guesses
                     </motion.h2>
                     <motion.p
                         variants={itemVariants}
-                        className="text-[var(--text-secondary)] max-w-2xl mx-auto mb-12"
+                        className="text-[var(--text-secondary)] max-w-2xl mx-auto text-lg"
                     >
-                        Transparent pricing. Final cost confirmed after a short scope discussion.
+                        We agree on scope first. Pricing comes next. No surprises.
                     </motion.p>
                 </motion.div>
 
@@ -102,60 +80,66 @@ export default function Pricing({ onBookCall }: PricingProps) {
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     variants={containerVariants}
-                    className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto"
+                    className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12"
                 >
-                    {pricingModels.map((model, index) => (
+                    {engagementPaths.map((path, index) => (
                         <motion.div
                             key={index}
                             variants={itemVariants}
-                            className={`relative rounded-2xl p-8 transition-all duration-300 ${model.highlighted
+                            className={`relative rounded-2xl p-8 text-center transition-all duration-300 flex flex-col justify-center min-h-[200px] ${path.highlighted
                                 ? "bg-[var(--bg-secondary)] border-2 border-blue-500/50 shadow-xl shadow-blue-500/10 scale-105 z-10"
                                 : "bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)]"
                                 }`}
                         >
-                            {model.highlighted && (
+                            {path.highlighted && path.badge && (
                                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full text-xs font-bold text-white shadow-lg">
-                                    Most Popular
+                                    {path.badge}
                                 </div>
                             )}
 
-                            <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${model.highlighted
-                                ? "bg-blue-500/10 text-blue-400"
-                                : "bg-white/5 text-slate-400"
-                                }`}>
-                                <model.icon className="w-7 h-7" />
-                            </div>
-
-                            <h3 className="text-2xl font-bold mb-1">{model.title}</h3>
-                            <p className="text-[var(--text-secondary)] text-sm mb-6">{model.description}</p>
-
-                            <ul className="space-y-3">
-                                {model.features.map((feature, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                                        <Check className={`w-4 h-4 flex-shrink-0 ${model.highlighted ? "text-blue-400" : "text-green-500"}`} />
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
+                            <h3 className="text-xl font-bold mb-4">{path.title}</h3>
+                            <p className="text-[var(--text-secondary)] leading-relaxed">
+                                {path.description}
+                            </p>
                         </motion.div>
                     ))}
                 </motion.div>
+
+                <motion.p
+                    variants={itemVariants}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                    className="text-center text-[var(--text-muted)] max-w-2xl mx-auto mb-16 italic"
+                >
+                    Many teams continue working with us beyond the first delivery as their needs evolve.
+                </motion.p>
 
                 <motion.div
                     variants={itemVariants}
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
-                    className="mt-16 text-center"
+                    className="text-center"
                 >
-                    <p className="text-lg text-[var(--text-secondary)] mb-4">
-                        Most teams spend 15–30 minutes with us to scope their needs before any pricing is finalized.
-                    </p>
-                    <button
-                        onClick={onBookCall}
-                        className="inline-flex items-center gap-2 text-indigo-400 font-semibold hover:text-indigo-300 transition-colors text-lg"
-                    >
-                        Book a Strategy Call <ArrowRight className="w-5 h-5" />
-                    </button>
+                    <div className="mb-8">
+                        <p className="text-xl text-white font-medium mb-2">
+                            You don’t need to choose this now.
+                        </p>
+                        <p className="text-[var(--text-secondary)]">
+                            Most teams figure this out in a short conversation.
+                        </p>
+                    </div>
+
+                    <div className="flex flex-col items-center gap-3">
+                        <button
+                            onClick={onBookCall}
+                            className="btn btn-primary h-12 px-8 text-lg"
+                        >
+                            Book a Strategy Call <ArrowRight className="w-5 h-5" />
+                        </button>
+                        <p className="text-xs text-[var(--text-muted)]">
+                            15–30 minutes · No obligation
+                        </p>
+                    </div>
                 </motion.div>
             </div>
         </section>

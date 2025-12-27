@@ -13,19 +13,19 @@ import {
 
 const steps = [
     {
-        icon: Phone,
-        title: "You bring the intent",
-        description: "Idea, MVP, feature, system, or scale problem.",
+        icon: FileSearch,
+        title: "Understand & Scope",
+        description: "Short conversation to understand intent and define boundaries.",
     },
     {
         icon: Code,
-        title: "We make it happen",
-        description: "(Team matching, execution planning, architecture, build, reviews, edge cases, and quality assurance)",
+        title: "Build & Review",
+        description: "Execution with regular updates and checkpoints.",
     },
     {
         icon: Rocket,
-        title: "Delivery, done right",
-        description: "Production-ready, scalable, and owned.",
+        title: "Deliver & Support",
+        description: "Production-ready delivery. You own everything.",
     },
 ];
 

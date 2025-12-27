@@ -7,23 +7,27 @@ import { Zap, Users, Shield, Wrench } from "lucide-react";
 const features = [
     {
         icon: Zap,
-        title: "AI-Amplified Execution",
-        description: "Our builders use AI tools to move 2-3x faster than traditional developers."
+        title: "Things don’t get stuck",
+        description: "Work moves forward continuously without waiting, chasing, or unnecessary delays.",
+        highlighted: false
     },
     {
         icon: Users,
-        title: "Job-Ready Talent",
-        description: "Vetted students and fresh grads eager to prove themselves on real projects."
+        title: "There is always an owner",
+        description: "Every piece of work has clear ownership, so nothing falls through the cracks.",
+        highlighted: false
     },
     {
         icon: Shield,
-        title: "Scoped & Predictable",
-        description: "Every project starts with clear scope, timeline, and fixed pricing."
+        title: "No scope surprises",
+        description: "We agree on what will be built before we start, so timelines and costs stay predictable.",
+        highlighted: true
     },
     {
         icon: Wrench,
-        title: "Architecture Support",
-        description: "Senior guidance ensures code quality and scalable foundations."
+        title: "You won’t need to rebuild later",
+        description: "Foundations are designed to hold up as your system grows, not force a rewrite later.",
+        highlighted: false
     }
 ];
 
@@ -41,9 +45,9 @@ export default function WhyThisWorks() {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-12"
                 >
-                    <h2 className="mb-4">Why this works</h2>
-                    <p className="text-[var(--text-secondary)] max-w-xl mx-auto">
-                        A new model for getting quality work done at startup speed.
+                    <h2 className="mb-4">Why teams trust us with execution</h2>
+                    <p className="text-[var(--text-secondary)] max-w-xl mx-auto text-lg">
+                        Clear ownership, predictable delivery, and no unpleasant surprises.
                     </p>
                 </motion.div>
 
@@ -54,13 +58,15 @@ export default function WhyThisWorks() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="card"
+                            className={`card p-6 ${feature.highlighted
+                                ? "border-blue-500/50 bg-blue-500/5 ring-1 ring-blue-500/20"
+                                : ""}`}
                         >
-                            <div className="icon-box">
+                            <div className={`icon-box mb-4 ${feature.highlighted ? "bg-blue-500/20 text-blue-400" : ""}`}>
                                 <feature.icon className="w-5 h-5" />
                             </div>
                             <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                            <p className="text-[var(--text-secondary)] text-sm">{feature.description}</p>
+                            <p className="text-[var(--text-secondary)] text-sm leading-relaxed">{feature.description}</p>
                         </motion.div>
                     ))}
                 </div>

@@ -3,13 +3,12 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/sections/Hero";
+import WhoWeHelp from "@/components/sections/WhoWeHelp";
 import WhyThisWorks from "@/components/sections/WhyThisWorks";
-import WhatWeOffer from "@/components/sections/WhatWeOffer";
-import ProjectTypes from "@/components/sections/ProjectTypes";
 import HowItWorks from "@/components/sections/HowItWorks";
-import Pricing from "@/components/sections/Pricing";
-import QualityControls from "@/components/sections/QualityControls";
 import Testimonials from "@/components/sections/Testimonials";
+import FAQ from "@/components/sections/FAQ";
+import Pricing from "@/components/sections/Pricing";
 import ConversionPanels from "@/components/sections/ConversionPanels";
 import Footer from "@/components/sections/Footer";
 import CalendarModal from "@/components/CalendarModal";
@@ -39,13 +38,12 @@ export default function Home() {
         onBookCall={openCalendar}
         onApplyTalent={openTalentForm}
       />
-      <WhyThisWorks />
-      <WhatWeOffer />
-      <ProjectTypes />
+      <WhoWeHelp />
       <HowItWorks />
-      <Pricing onBookCall={openCalendar} />
-      <QualityControls onBookCall={openCalendar} />
+      <WhyThisWorks />
       <Testimonials onBookCall={openCalendar} />
+      <FAQ />
+      <Pricing onBookCall={openCalendar} />
       <ConversionPanels
         onBookCall={openCalendar}
         onApplyTalent={openTalentForm}
