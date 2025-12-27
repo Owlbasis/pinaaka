@@ -69,69 +69,51 @@ const itemVariants: Variants = {
 };
 
 export default function QualityControls({ onBookCall }: QualityControlsProps) {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
-
     return (
         <section className="section">
             <div className="container">
-                <motion.div
-                    ref={ref}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    variants={containerVariants}
-                    className="max-w-4xl mx-auto"
-                >
-                    <motion.div variants={itemVariants} className="text-center mb-12">
-                        <span className="inline-block text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-4">
+                <div className="max-w-4xl mx-auto">
+                    <div className="text-center mb-12">
+                        <span className="inline-block text-[var(--text-muted)] text-sm font-medium uppercase tracking-widest mb-4">
                             Quality & Execution Confidence
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                        <h2 className="mb-4">
                             Built to remove execution risk
                         </h2>
-                        <p className="text-gray-400">
+                        <p className="text-[var(--text-secondary)]">
                             Everything you worry about — scope, quality, ownership, and communication — is handled upfront.
                         </p>
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        initial="hidden"
-                        animate={isInView ? "visible" : "hidden"}
-                        variants={containerVariants}
-                        className="grid sm:grid-cols-2 gap-4"
-                    >
+                    <div className="grid sm:grid-cols-2 gap-4">
                         {qualityPoints.map((point, index) => (
-                            <motion.div
+                            <div
                                 key={index}
-                                variants={itemVariants}
-                                className="flex items-start gap-4 p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-green-500/30 transition-colors"
+                                className="card flex items-start gap-4"
                             >
-                                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center">
-                                    <point.icon className="w-5 h-5 text-green-400" />
+                                <div className="icon-box flex-shrink-0">
+                                    <point.icon className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold mb-1">{point.title}</h3>
-                                    <p className="text-sm text-gray-500">{point.description}</p>
+                                    <h3 className="text-lg mb-1">{point.title}</h3>
+                                    <p className="text-sm text-[var(--text-muted)]">{point.description}</p>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        variants={itemVariants}
-                        className="mt-16 text-center"
-                    >
-                        <p className="text-lg text-white font-medium mb-4">
+                    <div className="mt-16 text-center">
+                        <p className="text-lg text-white font-medium mb-6">
                             This is why most clients come to us with just an idea — and leave with something real.
                         </p>
                         <button
                             onClick={onBookCall}
-                            className="inline-flex items-center gap-2 text-indigo-400 font-semibold hover:text-indigo-300 transition-colors text-lg"
+                            className="btn btn-secondary"
                         >
                             Something in mind? Let’s make it real. <ArrowRight className="w-5 h-5" />
                         </button>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
             </div>
         </section>
     );

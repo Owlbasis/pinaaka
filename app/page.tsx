@@ -37,10 +37,13 @@ export default function Home() {
         onBookCall={openCalendar}
         onApplyTalent={openTalentForm}
       />
+      <div className="section-divider" />
       <WhoWeHelp />
       <HowItWorks />
+      <div className="section-divider" />
       <WhyThisWorks />
       <Testimonials onBookCall={openCalendar} />
+      <div className="section-divider" />
       <FAQ />
       <Pricing onBookCall={openCalendar} />
       <Footer />

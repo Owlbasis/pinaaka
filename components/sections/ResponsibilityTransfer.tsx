@@ -9,11 +9,7 @@ export default function ResponsibilityTransfer() {
             <div className="container">
                 <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto items-center">
                     {/* You Bring */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                    <div
                         className="space-y-6"
                     >
                         <h2 className="text-3xl font-bold text-[var(--text-muted)]">You bring</h2>
@@ -31,7 +27,7 @@ export default function ResponsibilityTransfer() {
                                 Constraints and priorities
                             </li>
                         </ul>
-                    </motion.div>
+                    </div>
 
                     {/* Divider for mobile */}
                     <div className="md:hidden flex justify-center text-[var(--text-muted)]">
@@ -39,33 +35,29 @@ export default function ResponsibilityTransfer() {
                     </div>
 
                     {/* We Handle */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="p-8 rounded-3xl bg-[var(--bg-card)] border border-blue-500/20 shadow-lg shadow-blue-500/5"
+                    <div
+                        className="card"
                     >
                         <h2 className="text-3xl font-bold text-white mb-6">We handle</h2>
                         <ul className="space-y-4">
                             <li className="flex items-center gap-3 text-lg text-white">
-                                <CheckCircle2 className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                                <CheckCircle2 className="w-5 h-5 text-[var(--text-secondary)] flex-shrink-0" />
                                 Planning and scoping
                             </li>
                             <li className="flex items-center gap-3 text-lg text-white">
-                                <CheckCircle2 className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                                <CheckCircle2 className="w-5 h-5 text-[var(--text-secondary)] flex-shrink-0" />
                                 Execution and engineering decisions
                             </li>
                             <li className="flex items-center gap-3 text-lg text-white">
-                                <CheckCircle2 className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                                <CheckCircle2 className="w-5 h-5 text-[var(--text-secondary)] flex-shrink-0" />
                                 Quality and edge cases
                             </li>
                             <li className="flex items-center gap-3 text-lg text-white">
-                                <CheckCircle2 className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                                <CheckCircle2 className="w-5 h-5 text-[var(--text-secondary)] flex-shrink-0" />
                                 Delivery and handover
                             </li>
                         </ul>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

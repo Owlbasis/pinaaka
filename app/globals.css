@@ -5,33 +5,26 @@
 /* ===== PROFESSIONAL DESIGN SYSTEM ===== */
 
 :root {
-  /* Professional Dark Theme - 'Midnight Slate' */
-  --bg-primary: #0B1120;
-  --bg-secondary: #1E293B;
-  --bg-tertiary: #334155;
-  --bg-card: rgba(30, 41, 59, 0.7);
+  /* Calm & Authority Palette */
+  --bg-primary: #0B1020;
+  --bg-secondary: #11172B;
+  --surface: #161D35;
+  --border-soft: rgba(255, 255, 255, 0.06);
 
-  /* Trust & Action Accents */
-  --accent-primary: #3B82F6; /* Royal Blue */
-  --accent-secondary: #6366F1; /* Indigo */
-  --accent-success: #10B981; /* Emerald */
-  
-  /* Refined Text Colors */
-  --text-primary: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B8C0D9;
+  --text-muted: #8A93B8;
 
-  /* Subtle Borders */
-  --border-subtle: rgba(148, 163, 184, 0.1);
-  --border-accent: rgba(59, 130, 246, 0.5);
+  --accent: #5B7CFF;
+  --accent-soft: rgba(91, 124, 255, 0.1);
 
-  /* Modern Gradients */
-  --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #6366F1 100%);
-  --gradient-glow: radial-gradient(circle at center, rgba(59, 130, 246, 0.15), transparent 70%);
+  /* Typography */
+  --lh-heading: 1.15;
+  --lh-body: 1.6;
 
   /* Spacing & Layout */
-  --section-padding: clamp(5rem, 10vw, 8rem);
-  --container-max: 1280px;
+  --section-padding: clamp(96px, 12vh, 140px);
+  --container-max: 1200px;
 }
 
 /* ===== BASE STYLES ===== */
@@ -47,8 +40,8 @@ html {
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.6;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: var(--lh-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -61,10 +54,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
+  line-height: var(--lh-heading);
+  letter-spacing: -0.02em;
   color: #fff;
+  margin: 0;
 }
 
 h1 {
@@ -73,18 +66,23 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
 }
 
 h3 {
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
 }
 
-.text-gradient {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+p {
+  margin: 0;
+  font-weight: 400;
+}
+
+.text-muted {
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 /* ===== LAYOUT & UTILITIES ===== */
@@ -93,40 +91,38 @@ h3 {
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .section {
   position: relative;
-  padding-top: var(--section-padding);
-  padding-bottom: var(--section-padding);
+  padding: var(--section-padding) 0;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right,
+      transparent,
+      rgba(255, 255, 255, 0.06),
+      transparent);
 }
 
 /* ===== COMPONENTS ===== */
 
-/* Glass Card */
-.glass {
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 1rem;
-}
-
-/* Standard Card */
+/* Card Styling */
 .card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-  border-radius: 1rem;
-  padding: 2rem;
-  transition: all 0.3s ease;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 32px 36px;
+  transition: 200ms ease;
+  box-shadow: none;
 }
 
 .card:hover {
-  border-color: var(--border-accent);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 /* Buttons */
@@ -135,37 +131,35 @@ h3 {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.75rem;
+  padding: 14px 24px;
   font-size: 0.95rem;
-  font-weight: 600;
-  border-radius: 0.5rem; /* Rounded rect instead of pill for more corporate feel? Or keep pill? Let's go moderate rounded */
+  font-weight: 500;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 200ms ease;
   text-decoration: none;
   border: none;
   outline: none;
 }
 
 .btn-primary {
-  background: var(--accent-primary);
-  color: white;
-  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+  background: var(--accent);
+  color: #FFFFFF;
 }
 
 .btn-primary:hover {
-  background: #2563EB;
+  background: #4A6BFF;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.23);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-soft);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
   border-color: var(--text-secondary);
 }
 
@@ -177,19 +171,19 @@ h3 {
 
 .btn-ghost:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
 }
 
-/* Icon Box */
+/* Icon Box - Subtle */
 .icon-box {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.5rem;
-  height: 3.5rem;
-  background: rgba(59, 130, 246, 0.1);
-  border-radius: 0.75rem;
-  color: var(--accent-primary);
+  width: 3rem;
+  height: 3rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
 }
 
@@ -198,21 +192,16 @@ h3 {
   width: 100%;
   padding: 0.875rem 1rem;
   background: var(--bg-primary);
-  border: 1px solid var(--border-subtle);
-  border-radius: 0.5rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
   color: var(--text-primary);
   font-size: 1rem;
-  transition: all 0.2s ease;
+  transition: 200ms ease;
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-}
-
-.input::placeholder {
-  color: var(--text-muted);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Navigation */
@@ -222,33 +211,16 @@ h3 {
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 1.25rem 0;
-  transition: all 0.3s ease;
+  padding: 1rem 0;
+  transition: 200ms ease;
+  background: rgba(11, 16, 32, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .nav.scrolled {
-  background: rgba(11, 17, 32, 0.85); /* Matches bg-primary */
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-subtle);
-  padding: 1rem 0;
-}
-
-/* Animation Utilities */
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  :root {
-    --section-padding: 4rem;
-  }
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-soft);
 }
 
 /* Scrollbar */
@@ -261,12 +233,8 @@ h3 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-tertiary);
+  background: var(--surface);
   border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
 }
 
 /* Modals */
@@ -284,11 +252,26 @@ h3 {
 
 .modal-content {
   background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-  border-radius: 1rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
   max-width: 550px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
+}
+
+/* Remove visual noise */
+.text-gradient {
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+  color: inherit;
+}
+
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
 }
