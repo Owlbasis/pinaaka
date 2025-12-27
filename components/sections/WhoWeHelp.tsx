@@ -29,22 +29,18 @@ export default function WhoWeHelp() {
 
                 <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                     {audiences.map((item, index) => (
-                        <motion.div
+                        <div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="p-8 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] transition-colors"
+                            className="card"
                         >
-                            <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6">
+                            <div className="icon-box">
                                 <item.icon className="w-6 h-6" />
                             </div>
-                            <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
+                            <h3 className="text-xl mb-4">{item.title}</h3>
                             <p className="text-[var(--text-secondary)] leading-relaxed">
                                 {item.description}
                             </p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

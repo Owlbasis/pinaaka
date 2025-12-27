@@ -52,49 +52,33 @@ const itemVariants: Variants = {
 };
 
 export default function Testimonials({ onBookCall }: TestimonialsProps) {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
-
     return (
-        <section className="section bg-gradient-to-b from-transparent to-[var(--bg-secondary)]">
+        <section className="section">
             <div className="container">
-                <motion.div
-                    ref={ref}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    variants={containerVariants}
-                    className="max-w-6xl mx-auto"
-                >
-                    <motion.div variants={itemVariants} className="text-center mb-16">
-                        <span className="inline-block text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-4">
+                <div className="max-w-6xl mx-auto">
+                    <div className="text-center mb-16">
+                        <span className="inline-block text-[var(--text-muted)] text-sm font-medium uppercase tracking-widest mb-4">
                             What our partners say
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                        <h2 className="mb-4">
                             What partners say after working with us
                         </h2>
                         <p className="text-[var(--text-secondary)] max-w-2xl mx-auto text-lg">
                             Different industries. Same experience — clarity, ownership, and delivery.
                         </p>
-                    </motion.div>
+                    </div>
 
-                    <motion.p
-                        variants={itemVariants}
-                        className="text-center text-[var(--text-muted)] mb-8 text-sm"
-                    >
+                    <p className="text-center text-[var(--text-muted)] mb-8 text-sm">
                         Trusted by teams in banking, healthcare, and retail.
-                    </motion.p>
+                    </p>
 
-                    <motion.div
-                        variants={containerVariants}
-                        className="grid md:grid-cols-3 gap-6 mb-16"
-                    >
+                    <div className="grid md:grid-cols-3 gap-6 mb-16">
                         {testimonials.map((testimonial, index) => (
-                            <motion.div
+                            <div
                                 key={index}
-                                variants={itemVariants}
-                                className="flex flex-col p-8 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-subtle)] relative"
+                                className="card flex flex-col relative"
                             >
-                                <Quote className="w-8 h-8 text-indigo-500/20 mb-6" />
+                                <Quote className="w-8 h-8 text-[var(--text-muted)]/20 mb-6" />
                                 <p className="text-[var(--text-secondary)] mb-8 flex-grow leading-relaxed">
                                     "{testimonial.quote}"
                                 </p>
@@ -109,19 +93,19 @@ export default function Testimonials({ onBookCall }: TestimonialsProps) {
                                             />
                                         </div>
                                     ) : (
-                                        <div className="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 font-bold text-lg border border-indigo-500/20">
+                                        <div className="w-12 h-12 rounded-full bg-[var(--bg-primary)] flex items-center justify-center text-[var(--text-secondary)] font-bold text-lg border border-[var(--border-soft)]">
                                             {testimonial.author.charAt(0)}
                                         </div>
                                     )}
                                     <div className="flex-grow">
                                         <div className="flex items-center justify-between">
-                                            <p className="font-semibold text-white">{testimonial.author}</p>
+                                            <p className="font-medium text-white">{testimonial.author}</p>
                                             {testimonial.linkedin && (
                                                 <a
                                                     href={testimonial.linkedin}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="text-gray-500 hover:text-[#0077b5] transition-colors"
+                                                    className="text-gray-500 hover:text-white transition-colors"
                                                     aria-label={`LinkedIn profile of ${testimonial.author}`}
                                                 >
                                                     <Linkedin className="w-4 h-4" />
@@ -131,25 +115,22 @@ export default function Testimonials({ onBookCall }: TestimonialsProps) {
                                         <p className="text-sm text-[var(--text-muted)]">{testimonial.role}</p>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        variants={itemVariants}
-                        className="text-center"
-                    >
-                        <p className="text-lg text-white font-medium mb-4">
+                    <div className="text-center">
+                        <p className="text-lg text-white font-medium mb-6">
                             Different industries. Same experience — clarity, ownership, and delivery.
                         </p>
                         <button
                             onClick={onBookCall}
-                            className="inline-flex items-center gap-2 text-indigo-400 font-semibold hover:text-indigo-300 transition-colors text-lg"
+                            className="btn btn-secondary"
                         >
                             Something in mind? Let’s make it real. <ArrowRight className="w-5 h-5" />
                         </button>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
             </div>
         </section>
     );

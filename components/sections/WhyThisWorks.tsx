@@ -53,21 +53,16 @@ export default function WhyThisWorks() {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {features.map((feature, index) => (
-                        <motion.div
+                        <div
                             key={feature.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className={`card p-6 ${feature.highlighted
-                                ? "border-blue-500/50 bg-blue-500/5 ring-1 ring-blue-500/20"
-                                : ""}`}
+                            className="card"
                         >
-                            <div className={`icon-box mb-4 ${feature.highlighted ? "bg-blue-500/20 text-blue-400" : ""}`}>
+                            <div className="icon-box">
                                 <feature.icon className="w-5 h-5" />
                             </div>
-                            <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
+                            <h3 className="text-lg mb-2">{feature.title}</h3>
                             <p className="text-[var(--text-secondary)] text-sm leading-relaxed">{feature.description}</p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

@@ -32,11 +32,11 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
     }, []);
 
     return (
-        <header className={`nav ${isScrolled ? "scrolled shadow-md" : "bg-transparent"}`}>
+        <header className={`nav ${isScrolled ? "scrolled" : ""}`}>
             <div className="container">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2.5 group">
+                    <Link href="/" className="flex items-center gap-2.5">
                         <div className="relative w-8 h-8">
                             <Image
                                 src="/logo.png"
@@ -45,7 +45,7 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                                 className="object-contain"
                             />
                         </div>
-                        <span className="text-lg font-bold text-white tracking-tight">Charcoal Labs</span>
+                        <span className="text-lg font-semibold text-white tracking-tight">Charcoal Labs</span>
                     </Link>
 
                     {/* Desktop Nav */}
@@ -54,7 +54,7 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="text-slate-400 hover:text-white transition-colors text-sm font-medium"
+                                className="text-[var(--text-secondary)] hover:text-white transition-colors text-sm font-normal"
                             >
                                 {link.label}
                             </Link>
@@ -63,17 +63,17 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
 
                     {/* CTAs */}
                     <div className="hidden md:flex items-center gap-3">
-                        <button onClick={onApplyTalent} className="text-sm font-medium text-slate-400 hover:text-white transition-colors px-3 py-2">
+                        <button onClick={onApplyTalent} className="text-sm font-normal text-[var(--text-secondary)] hover:text-white transition-colors px-3 py-2">
                             For Talent
                         </button>
-                        <button onClick={onBookCall} className="btn btn-primary h-9 px-4 text-sm shadow-sm opacity-90 hover:opacity-100">
+                        <button onClick={onBookCall} className="btn btn-primary">
                             Book a Call
                         </button>
                     </div>
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="md:hidden text-slate-300 p-1"
+                        className="md:hidden text-[var(--text-secondary)] p-1"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
                         {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -88,14 +88,14 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-[#0B1120] border-b border-white/5 overflow-hidden"
+                        className="md:hidden bg-[var(--bg-primary)] border-b border-[var(--border-soft)] overflow-hidden"
                     >
                         <nav className="px-4 py-6 flex flex-col gap-4">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.href}
                                     href={link.href}
-                                    className="text-lg font-medium text-slate-300 hover:text-white py-2 border-b border-white/5"
+                                    className="text-lg font-normal text-[var(--text-secondary)] hover:text-white py-2 border-b border-[var(--border-soft)]"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {link.label}

@@ -76,7 +76,7 @@ export default function FAQ() {
 
         return (
             <div
-                className="border border-[var(--border-subtle)] rounded-lg bg-[var(--bg-card)] overflow-hidden transition-colors hover:border-[var(--border-accent)]"
+                className="border border-[var(--border-soft)] rounded-lg bg-[var(--surface)] overflow-hidden transition-colors"
             >
                 <button
                     onClick={() => toggleFAQ(uniqueId)}
@@ -86,7 +86,7 @@ export default function FAQ() {
                     <span className="font-medium text-white pr-4">
                         {item.question}
                     </span>
-                    <span className="text-gray-500 flex-shrink-0">
+                    <span className="text-[var(--text-muted)] flex-shrink-0">
                         {isOpen ? (
                             <Minus className="w-5 h-5" />
                         ) : (
@@ -100,7 +100,7 @@ export default function FAQ() {
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            transition={{ duration: 0.2, ease: "easeInOut" }}
                         >
                             <div className="p-5 pt-0 text-[var(--text-secondary)] leading-relaxed border-t border-transparent">
                                 {item.answer}
@@ -113,10 +113,10 @@ export default function FAQ() {
     };
 
     return (
-        <section id="faq" className="section bg-[var(--bg-primary)]">
+        <section id="faq" className="section">
             <div className="container max-w-3xl">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                    <h2 className="mb-4">
                         Questions teams usually ask
                     </h2>
                     <p className="text-[var(--text-secondary)]">
@@ -135,7 +135,7 @@ export default function FAQ() {
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: "auto", opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                                transition={{ duration: 0.2, ease: "easeInOut" }}
                             >
                                 <div className="space-y-4 pt-4">
                                     {secondaryFAQs.map((item, index) => (
@@ -149,7 +149,7 @@ export default function FAQ() {
                     <div className="text-center pt-8">
                         <button
                             onClick={() => setShowAll(!showAll)}
-                            className="inline-flex items-center gap-2 text-indigo-400 font-medium hover:text-indigo-300 transition-colors"
+                            className="btn btn-secondary"
                         >
                             {showAll ? "View fewer questions" : "View all questions"} <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${showAll ? "-rotate-90" : "rotate-0"}`} />
                         </button>
