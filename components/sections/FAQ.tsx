@@ -113,11 +113,11 @@ export default function FAQ() {
     };
 
     return (
-        <section className="section bg-[var(--bg-primary)]">
+        <section id="faq" className="section bg-[var(--bg-primary)]">
             <div className="container max-w-3xl">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                        Questions teams usually ask before working with us
+                        Questions teams usually ask
                     </h2>
                     <p className="text-[var(--text-secondary)]">
                         Most teams only need a quick conversation to get clarity.

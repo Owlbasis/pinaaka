@@ -14,18 +14,18 @@ import {
 const steps = [
     {
         icon: FileSearch,
-        title: "Understand & Scope",
-        description: "Short conversation to understand intent and define boundaries.",
+        title: "Clarify the intent",
+        description: "Short conversation to understand the problem and define boundaries.",
     },
     {
         icon: Code,
-        title: "Build & Review",
-        description: "Execution with regular updates and checkpoints.",
+        title: "Build and review",
+        description: "Execution with regular checkpoints and shared visibility.",
     },
     {
         icon: Rocket,
-        title: "Deliver & Support",
-        description: "Production-ready delivery. You own everything.",
+        title: "Deliver and support",
+        description: "Production-ready system. You own everything.",
     },
 ];
 
@@ -71,13 +71,13 @@ export default function HowItWorks() {
                         variants={itemVariants}
                         className="text-3xl md:text-4xl font-bold mb-4"
                     >
-                        From intent to delivery
+                        How it works
                     </motion.h2>
                     <motion.p
                         variants={itemVariants}
-                        className="text-gray-400 max-w-2xl mx-auto"
+                        className="text-gray-400 max-w-2xl mx-auto text-lg"
                     >
-                        A transparent process designed for predictable outcomes.
+                        A simple process designed to keep things clear and predictable.
                     </motion.p>
                 </motion.div>
 

@@ -70,8 +70,11 @@ export default function Testimonials({ onBookCall }: TestimonialsProps) {
                             What our partners say
                         </span>
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Experiences from teams who trusted us with execution.
+                            What partners say after working with us
                         </h2>
+                        <p className="text-[var(--text-secondary)] max-w-2xl mx-auto text-lg">
+                            Different industries. Same experience — clarity, ownership, and delivery.
+                        </p>
                     </motion.div>
 
                     <motion.div

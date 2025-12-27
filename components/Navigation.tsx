@@ -7,10 +7,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 const navLinks = [
-    { href: "#why", label: "Why Us" },
-    { href: "#services", label: "Services" },
-    { href: "#how-it-works", label: "Process" },
+    { href: "#who-we-help", label: "Who We Help" },
+    { href: "#how-it-works", label: "How It Works" },
+    { href: "#why", label: "Why Teams Trust Us" },
     { href: "#pricing", label: "Pricing" },
+    { href: "#faq", label: "FAQs" },
 ];
 
 interface NavigationProps {

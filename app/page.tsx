@@ -9,7 +9,6 @@ import HowItWorks from "@/components/sections/HowItWorks";
 import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
 import Pricing from "@/components/sections/Pricing";
-import ConversionPanels from "@/components/sections/ConversionPanels";
 import Footer from "@/components/sections/Footer";
 import CalendarModal from "@/components/CalendarModal";
 
@@ -44,10 +43,6 @@ export default function Home() {
       <Testimonials onBookCall={openCalendar} />
       <FAQ />
       <Pricing onBookCall={openCalendar} />
-      <ConversionPanels
-        onBookCall={openCalendar}
-        onApplyTalent={openTalentForm}
-      />
       <Footer />
 
       {/* Global Modals */}
