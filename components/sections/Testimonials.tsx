@@ -77,6 +77,13 @@ export default function Testimonials({ onBookCall }: TestimonialsProps) {
                         </p>
                     </motion.div>
 
+                    <motion.p
+                        variants={itemVariants}
+                        className="text-center text-[var(--text-muted)] mb-8 text-sm"
+                    >
+                        Trusted by teams in banking, healthcare, and retail.
+                    </motion.p>
+
                     <motion.div
                         variants={containerVariants}
                         className="grid md:grid-cols-3 gap-6 mb-16"

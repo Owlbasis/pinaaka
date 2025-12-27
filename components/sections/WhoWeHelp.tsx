@@ -7,12 +7,12 @@ const audiences = [
     {
         icon: Building2,
         title: "Already running a business?",
-        description: "If your business runs on manual processes, spreadsheets, or WhatsApp — and you want systems, automation, or AI that actually helps — we digitise and streamline how things work."
+        description: "If your business runs on manual processes, spreadsheets, or WhatsApp — and you want systems, automation, or AI that actually helps — we digitise and streamline how things work. So your operations feel simpler, not heavier."
     },
     {
         icon: Lightbulb,
         title: "Starting from an idea or early MVP?",
-        description: "If you have an idea, early MVP, or concept you want built properly — without managing tech or execution — we take it from intent to production."
+        description: "If you have an idea, early MVP, or concept you want built properly — without managing tech or execution — we take it from intent to production. So you can focus on the idea, not managing execution."
     }
 ];
 

@@ -7,11 +7,11 @@ import { Plus, Minus, ArrowRight } from "lucide-react";
 const primaryFAQs = [
     {
         question: "Who do you typically work with?",
-        answer: "We work with product teams, founders, and companies looking to take ideas, MVPs, or systems to production with clear ownership and predictable delivery."
+        answer: "We work with product teams, founders, and companies looking to take ideas, MVPs, or systems to production with clear ownership."
     },
     {
         question: "How do projects usually start?",
-        answer: "Projects typically start with a short strategy call to understand intent, scope, and constraints. From there, we propose a clear execution plan."
+        answer: "We start with a short conversation to understand intent and scope, then suggest the right next step."
     },
     {
         question: "Who owns the code and IP?",
@@ -26,7 +26,7 @@ const primaryFAQs = [
 const secondaryFAQs = [
     {
         question: "Do you work with early-stage ideas or only existing products?",
-        answer: "Both. Some teams come to us with just an idea, others with an MVP or a system that needs to scale. The engagement depends on scope, not stage."
+        answer: "Both. We take concepts from intent to production, regardless of the current stage."
     },
     {
         question: "Are you an agency or a staffing company?",
@@ -34,15 +34,15 @@ const secondaryFAQs = [
     },
     {
         question: "How do you handle changing requirements?",
-        answer: "For fixed-scope engagements, scope is locked upfront. Any changes are handled transparently through re-scoping or phased delivery."
+        answer: "Scope is defined upfront. Any changes are handled transparently through re-scoping or phased delivery."
     },
     {
         question: "How involved do we need to be during execution?",
-        answer: "As involved as you prefer. We handle execution while keeping you informed through regular updates and demos."
+        answer: "As involved as you prefer. We handle execution while keeping you informed through regular updates."
     },
     {
         question: "How do you ensure production-level quality?",
-        answer: "Quality checks, reviews, and edge-case handling are built into the delivery process, not added at the end."
+        answer: "Quality checks and edge-case handling are built into our delivery process from the start."
     },
     {
         question: "Do you sign NDAs?",
@@ -50,7 +50,7 @@ const secondaryFAQs = [
     },
     {
         question: "Do you offer fixed pricing or hourly models?",
-        answer: "We offer fixed-scope delivery, hourly exploration, and long-term retainers depending on the engagement."
+        answer: "We offer fixed-scope delivery and hourly exploration depending on the engagement."
     },
     {
         question: "Do you provide ongoing support or continued development after delivery?",

@@ -74,7 +74,7 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
                             </button>
                         </div>
                         <p className="text-xs text-[var(--text-muted)] mt-2">
-                            15–30 minutes · No obligation · Clarity first
+                            What we’ll do: understand your intent → suggest the right approach → outline next steps.
                         </p>
                     </motion.div>
                 </div>

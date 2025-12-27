@@ -29,22 +29,26 @@ export default function Footer() {
 
                     {/* Links */}
                     <nav aria-label="Footer Navigation" className="flex flex-wrap justify-center gap-6 text-sm">
-                        <Link href="#why" className="text-gray-400 hover:text-white transition-colors">
-                            Why Us
-                        </Link>
-                        <Link href="#services" className="text-gray-400 hover:text-white transition-colors">
-                            Services
+                        <Link href="#who-we-help" className="text-gray-400 hover:text-white transition-colors">
+                            How We Help
                         </Link>
                         <Link href="#how-it-works" className="text-gray-400 hover:text-white transition-colors">
                             How It Works
                         </Link>
+                        <Link href="#why" className="text-gray-400 hover:text-white transition-colors">
+                            Why Teams Trust Us
+                        </Link>
                         <Link href="#pricing" className="text-gray-400 hover:text-white transition-colors">
                             Pricing
+                        </Link>
+                        <Link href="#faq" className="text-gray-400 hover:text-white transition-colors">
+                            FAQs
                         </Link>
                     </nav>
 
                     {/* Contact & Social */}
                     <div className="flex flex-col items-center md:items-end gap-4">
+                        <p className="text-sm text-gray-500">Prefer clarity over calls? Email us.</p>
                         <a
                             href="mailto:hello@charcoallabs.com"
                             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"

@@ -137,7 +137,7 @@ export default function Pricing({ onBookCall }: PricingProps) {
                             Book a Strategy Call <ArrowRight className="w-5 h-5" />
                         </button>
                         <p className="text-xs text-[var(--text-muted)]">
-                            15–30 minutes · No obligation
+                            What we’ll do: understand your intent → suggest the right approach → outline next steps.
                         </p>
                     </div>
                 </motion.div>
