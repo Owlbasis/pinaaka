@@ -13,19 +13,19 @@ import {
 
 const steps = [
     {
-        icon: Phone,
-        title: "You bring the intent",
-        description: "Idea, MVP, feature, system, or scale problem.",
+        icon: FileSearch,
+        title: "Clarify the intent",
+        description: "Short conversation to understand the problem and define boundaries.",
     },
     {
         icon: Code,
-        title: "We make it happen",
-        description: "(Team matching, execution planning, architecture, build, reviews, edge cases, and quality assurance)",
+        title: "Build and review",
+        description: "Execution with regular checkpoints and shared visibility.",
     },
     {
         icon: Rocket,
-        title: "Delivery, done right",
-        description: "Production-ready, scalable, and owned.",
+        title: "Deliver and support",
+        description: "Production-ready system. You own everything.",
     },
 ];
 
@@ -48,72 +48,48 @@ const itemVariants: Variants = {
 };
 
 export default function HowItWorks() {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
-
     return (
         <section id="how-it-works" className="section">
             <div className="container">
-                <motion.div
-                    ref={ref}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    variants={containerVariants}
-                    className="text-center mb-16"
-                >
-                    <motion.span
-                        variants={itemVariants}
-                        className="inline-block text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-4"
-                    >
+                <div className="text-center mb-16">
+                    <span className="inline-block text-[var(--text-muted)] text-sm font-medium uppercase tracking-widest mb-4">
                         How It Works
-                    </motion.span>
-                    <motion.h2
-                        variants={itemVariants}
-                        className="text-3xl md:text-4xl font-bold mb-4"
-                    >
-                        From intent to delivery
-                    </motion.h2>
-                    <motion.p
-                        variants={itemVariants}
-                        className="text-gray-400 max-w-2xl mx-auto"
-                    >
-                        A transparent process designed for predictable outcomes.
-                    </motion.p>
-                </motion.div>
+                    </span>
+                    <h2 className="mb-4">
+                        How it works
+                    </h2>
+                    <p className="text-[var(--text-secondary)] max-w-2xl mx-auto text-lg">
+                        A simple process designed to keep things clear and predictable.
+                    </p>
+                </div>
 
-                <motion.div
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    variants={containerVariants}
-                    className="relative max-w-3xl mx-auto"
-                >
+                <div className="relative max-w-3xl mx-auto">
                     {/* Timeline line */}
-                    <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 md:-translate-x-1/2" />
+                    <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[1px] bg-[var(--border-soft)] md:-translate-x-1/2" />
 
                     {steps.map((step, index) => (
-                        <motion.div
+                        <div
                             key={index}
-                            variants={itemVariants}
-                            className={`relative flex items-start gap-6 mb-12 last:mb-0 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                            className={`relative flex items-start gap-6 mb-16 last:mb-0 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                                 }`}
                         >
                             {/* Step number dot */}
-                            <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-indigo-500 border-4 border-[#050810] -translate-x-1/2 z-10" />
+                            <div className="absolute left-8 md:left-1/2 w-3 h-3 rounded-full bg-[var(--border-soft)] border-4 border-[var(--bg-primary)] -translate-x-1/2 z-10" />
 
                             {/* Content */}
                             <div className={`ml-16 md:ml-0 md:w-[calc(50%-40px)] ${index % 2 === 0 ? "md:text-right md:pr-10" : "md:text-left md:pl-10"}`}>
-                                <div className={`inline-flex items-center gap-3 mb-2 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
-                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 flex items-center justify-center">
-                                        <step.icon className="w-5 h-5 text-indigo-400" />
+                                <div className={`inline-flex items-center gap-3 mb-3 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                                    <div className="w-10 h-10 rounded-xl bg-[var(--surface)] border border-[var(--border-soft)] flex items-center justify-center">
+                                        <step.icon className="w-5 h-5 text-[var(--text-secondary)]" />
                                     </div>
-                                    <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Step {index + 1}</span>
+                                    <span className="text-xs font-medium text-[var(--text-muted)] uppercase tracking-wider">Step {index + 1}</span>
                                 </div>
-                                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                                <p className="text-gray-400">{step.description}</p>
+                                <h3 className="text-xl mb-2">{step.title}</h3>
+                                <p className="text-[var(--text-secondary)]">{step.description}</p>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

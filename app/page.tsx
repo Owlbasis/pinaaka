@@ -3,14 +3,12 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/sections/Hero";
+import WhoWeHelp from "@/components/sections/WhoWeHelp";
 import WhyThisWorks from "@/components/sections/WhyThisWorks";
-import WhatWeOffer from "@/components/sections/WhatWeOffer";
-import ProjectTypes from "@/components/sections/ProjectTypes";
 import HowItWorks from "@/components/sections/HowItWorks";
-import Pricing from "@/components/sections/Pricing";
-import QualityControls from "@/components/sections/QualityControls";
 import Testimonials from "@/components/sections/Testimonials";
-import ConversionPanels from "@/components/sections/ConversionPanels";
+import FAQ from "@/components/sections/FAQ";
+import Pricing from "@/components/sections/Pricing";
 import Footer from "@/components/sections/Footer";
 import CalendarModal from "@/components/CalendarModal";
 
@@ -39,17 +37,15 @@ export default function Home() {
         onBookCall={openCalendar}
         onApplyTalent={openTalentForm}
       />
-      <WhyThisWorks />
-      <WhatWeOffer />
-      <ProjectTypes />
+      <div className="section-divider" />
+      <WhoWeHelp />
       <HowItWorks />
-      <Pricing onBookCall={openCalendar} />
-      <QualityControls onBookCall={openCalendar} />
+      <div className="section-divider" />
+      <WhyThisWorks />
       <Testimonials onBookCall={openCalendar} />
-      <ConversionPanels
-        onBookCall={openCalendar}
-        onApplyTalent={openTalentForm}
-      />
+      <div className="section-divider" />
+      <FAQ />
+      <Pricing onBookCall={openCalendar} />
       <Footer />
 
       {/* Global Modals */}

@@ -35,27 +35,27 @@ export default function CalendarModal({ onClose }: CalendarModalProps) {
                     onClick={(e) => e.stopPropagation()}
                 >
                     {/* Header */}
-                    <div className="flex items-center justify-between p-6 border-b border-white/10">
+                    <div className="flex items-center justify-between p-6 border-b border-[var(--border-soft)]">
                         <div>
-                            <h3 className="text-xl font-bold">Book a Discovery Call</h3>
-                            <p className="text-sm text-gray-400 mt-1">Choose a time that works for you</p>
+                            <h3 className="text-xl">Book a Discovery Call</h3>
+                            <p className="text-sm text-[var(--text-muted)] mt-1">Choose a time that works for you</p>
                         </div>
                         <button
                             onClick={onClose}
                             className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
                         >
-                            <X className="w-5 h-5 text-gray-400" />
+                            <X className="w-5 h-5 text-[var(--text-muted)]" />
                         </button>
                     </div>
 
                     {/* Content */}
                     <div className="p-8 text-center">
-                        <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center mx-auto mb-6">
-                            <Calendar className="w-10 h-10 text-white" />
+                        <div className="w-16 h-16 rounded-2xl bg-[var(--surface)] border border-[var(--border-soft)] flex items-center justify-center mx-auto mb-6">
+                            <Calendar className="w-8 h-8 text-[var(--text-secondary)]" />
                         </div>
 
-                        <h4 className="text-lg font-semibold mb-2">Calendar Opened in New Tab</h4>
-                        <p className="text-gray-400 text-sm mb-6">
+                        <h4 className="text-lg font-medium mb-2">Calendar Opened in New Tab</h4>
+                        <p className="text-[var(--text-muted)] text-sm mb-8">
                             Your Google Calendar booking page has opened in a new tab. If it didn&apos;t open, click the button below.
                         </p>
 
@@ -63,7 +63,7 @@ export default function CalendarModal({ onClose }: CalendarModalProps) {
                             href={CALENDAR_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-primary inline-flex"
+                            className="btn btn-primary"
                         >
                             <ExternalLink className="w-5 h-5" />
                             Open Calendar
@@ -71,7 +71,7 @@ export default function CalendarModal({ onClose }: CalendarModalProps) {
 
                         <button
                             onClick={onClose}
-                            className="block w-full mt-4 text-gray-500 hover:text-white text-sm transition-colors"
+                            className="block w-full mt-6 text-[var(--text-muted)] hover:text-white text-sm transition-colors"
                         >
                             Close this window
                         </button>

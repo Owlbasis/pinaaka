@@ -26,13 +26,13 @@ export default function ConversionPanels({ onBookCall, onApplyTalent }: Conversi
                     <h2 className="sr-only">Get Started</h2>
                     {/* Companies Panel */}
                     <div className="card p-6 md:p-8">
-                        <h3 className="text-xl font-bold mb-2">Something in mind? Let’s make it real.</h3>
+                        <h3 className="text-xl font-bold mb-2">Have something in mind?</h3>
                         <p className="text-[var(--text-secondary)] text-sm mb-6">
-                            Book a call and get a scoped plan within 24–48 hours.
+                            Let’s talk it through and figure out the right approach.
                         </p>
                         <button onClick={onBookCall} className="btn btn-primary">
                             <Calendar className="w-4 h-4" />
-                            Book a Call
+                            Book a Strategy Call
                             <ArrowRight className="w-4 h-4" />
                         </button>
                     </div>
