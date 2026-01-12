@@ -21,6 +21,9 @@ export default function Footer() {
                             </div>
                             <span className="text-2xl font-black text-[var(--text-primary)] italic">Charcoal Labs</span>
                         </Link>
+                        <span className="text-sm font-medium text-[var(--text-primary)]/80">
+                            Started by IITians
+                        </span>
                     </div>
 
                     {/* Connect Links */}
@@ -45,17 +48,6 @@ export default function Footer() {
                         </a>
                     </div>
 
-                    {/* Newsletter */}
-                    <div className="flex flex-col gap-2">
-                        <h4 className="text-sm font-bold uppercase tracking-wider text-[var(--text-primary)] mb-2">Subscribe to the newsletter</h4>
-                        <div className="flex items-center gap-2">
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="bg-transparent border-b-2 border-[var(--text-primary)] text-[var(--text-primary)] placeholder-[var(--text-primary)]/60 py-2 px-0 focus:outline-none w-48"
-                            />
-                        </div>
-                    </div>
                 </div>
 
                 {/* Bottom */}
