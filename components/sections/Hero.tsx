@@ -14,7 +14,11 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
             <div className="container relative z-10">
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="mb-10">
-                        <span className="text-sm text-[var(--text-muted)] uppercase tracking-widest font-medium">
+                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--accent)] text-[var(--text-primary)] text-sm font-semibold">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--text-primary)] opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--text-primary)]"></span>
+                            </span>
                             Serious about building something real?
                         </span>
                     </div>
@@ -22,15 +26,15 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
                     <h1 className="mb-8">
                         You bring the intent.
                         <br />
-                        <span className="text-white">We make it Happen.</span>
+                        <span className="text-gradient">We make it Happen.</span>
                     </h1>
 
                     <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-6 max-w-2xl mx-auto">
-                        From first idea to working system — without chaos or rework.
+                        From first idea to working system, without chaos or rework.
                     </p>
 
                     <p className="text-[var(--text-muted)] mb-12">
-                        You don’t need everything figured out. That’s our job.
+                        You don't need everything figured out. That's our job.
                     </p>
 
                     <div className="flex flex-col items-center gap-6">
@@ -49,7 +53,7 @@ export default function Hero({ onBookCall, onApplyTalent }: HeroProps) {
                             </button>
                         </div>
                         <p className="text-xs text-[var(--text-muted)]">
-                            What we’ll do: understand your intent → suggest the right approach → outline next steps.
+                            What we'll do: understand your intent → suggest the right approach → outline next steps.
                         </p>
                     </div>
                 </div>

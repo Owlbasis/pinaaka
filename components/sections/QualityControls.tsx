@@ -81,7 +81,7 @@ export default function QualityControls({ onBookCall }: QualityControlsProps) {
                             Built to remove execution risk
                         </h2>
                         <p className="text-[var(--text-secondary)]">
-                            Everything you worry about — scope, quality, ownership, and communication — is handled upfront.
+                            Everything you worry about: scope, quality, ownership, and communication. All handled upfront.
                         </p>
                     </div>
 
@@ -103,8 +103,8 @@ export default function QualityControls({ onBookCall }: QualityControlsProps) {
                     </div>
 
                     <div className="mt-16 text-center">
-                        <p className="text-lg text-white font-medium mb-6">
-                            This is why most clients come to us with just an idea — and leave with something real.
+                        <p className="text-lg text-[var(--text-primary)] font-medium mb-6">
+                            This is why most clients come to us with just an idea and leave with something real.
                         </p>
                         <button
                             onClick={onBookCall}

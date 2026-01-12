@@ -8,7 +8,7 @@ const services = [
     {
         icon: FileText,
         title: "Scoped Delivery",
-        description: "PRD-lite, deliverables, timeline, and acceptance criteria — all defined upfront.",
+        description: "PRD-lite, deliverables, timeline, and acceptance criteria. All defined upfront.",
         gradient: "from-indigo-500 to-blue-500",
     },
     {

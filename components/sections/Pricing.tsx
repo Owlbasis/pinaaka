@@ -8,37 +8,17 @@ interface PricingProps {
     onBookCall?: () => void;
 }
 
-
-
-const containerVariants: Variants = {
-    hidden: {},
-    visible: {
-        transition: {
-            staggerChildren: 0.1,
-        },
-    },
-};
-
-const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.5, ease: "easeOut" }
-    },
-};
-
 export default function Pricing({ onBookCall }: PricingProps) {
     const engagementPaths = [
         {
-            title: "When things aren’t fully clear yet",
+            title: "When things aren't fully clear yet",
             description: "We start by exploring the problem and shaping the right direction.",
-            highlighted: false,
+            color: "bg-[#FDE047]", // Yellow
         },
         {
             title: "When you know what needs to be built",
             description: "We define the scope upfront and deliver it end to end.",
-            highlighted: true,
+            color: "bg-[#F9A8D4]", // Pink
             badge: "Most common"
         }
     ];
@@ -47,7 +27,7 @@ export default function Pricing({ onBookCall }: PricingProps) {
         <section id="pricing" className="section">
             <div className="container">
                 <div className="text-center mb-12">
-                    <span className="inline-block text-[var(--text-muted)] text-sm font-medium uppercase tracking-widest mb-4">
+                    <span className="inline-block text-[var(--accent)] text-sm font-semibold uppercase tracking-widest mb-4">
                         Pricing
                     </span>
                     <h2 className="mb-4">
@@ -62,10 +42,15 @@ export default function Pricing({ onBookCall }: PricingProps) {
                     {engagementPaths.map((path, index) => (
                         <div
                             key={index}
-                            className="card text-center flex flex-col justify-center min-h-[200px]"
+                            className={`${path.color} rounded-2xl text-center flex flex-col justify-center min-h-[200px] p-8 relative transition-all duration-300 hover:scale-[1.02]`}
                         >
-                            <h3 className="text-xl mb-4">{path.title}</h3>
-                            <p className="text-[var(--text-secondary)] leading-relaxed">
+                            {path.badge && (
+                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[var(--text-primary)] rounded-full text-xs font-bold text-white shadow-lg">
+                                    {path.badge}
+                                </div>
+                            )}
+                            <h3 className="text-xl font-bold mb-4 text-[var(--text-primary)]">{path.title}</h3>
+                            <p className="text-[var(--text-primary)]/80 leading-relaxed">
                                 {path.description}
                             </p>
                         </div>
@@ -78,8 +63,8 @@ export default function Pricing({ onBookCall }: PricingProps) {
 
                 <div className="text-center">
                     <div className="mb-8">
-                        <p className="text-xl text-white font-medium mb-2">
-                            You don’t need to choose this now.
+                        <p className="text-xl text-[var(--text-primary)] font-medium mb-2">
+                            You don't need to choose this now.
                         </p>
                         <p className="text-[var(--text-secondary)]">
                             Most teams figure this out in a short conversation.
@@ -94,7 +79,7 @@ export default function Pricing({ onBookCall }: PricingProps) {
                             Book a Strategy Call <ArrowRight className="w-5 h-5" />
                         </button>
                         <p className="text-xs text-[var(--text-muted)]">
-                            What we’ll do: understand your intent → suggest the right approach → outline next steps.
+                            What we'll do: understand your intent → suggest the right approach → outline next steps.
                         </p>
                     </div>
                 </div>

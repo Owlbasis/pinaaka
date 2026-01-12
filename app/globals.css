@@ -2,21 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== PROFESSIONAL DESIGN SYSTEM ===== */
+/* ===== VESPER-STYLE WARM DESIGN SYSTEM ===== */
 
 :root {
-  /* Calm & Authority Palette */
-  --bg-primary: #0B1020;
-  --bg-secondary: #11172B;
-  --surface: #161D35;
-  --border-soft: rgba(255, 255, 255, 0.06);
+  /* Warm Parchment Theme - easier on eyes */
+  --bg-primary: #EDE4DA;
+  --bg-secondary: #F5EFE7;
+  --surface: #F5EFE7;
+  --border-soft: rgba(0, 0, 0, 0.06);
 
-  --text-primary: #FFFFFF;
-  --text-secondary: #B8C0D9;
-  --text-muted: #8A93B8;
+  /* Dark Text Colors */
+  --text-primary: #1A1A1A;
+  --text-secondary: #4A4A4A;
+  --text-muted: #888888;
 
-  --accent: #5B7CFF;
-  --accent-soft: rgba(91, 124, 255, 0.1);
+  /* Vibrant Accent Colors */
+  --accent: #E879C9;
+  /* Pink */
+  --accent-soft: rgba(232, 121, 201, 0.1);
+  --accent-orange: #FF4500;
+  --accent-yellow: #FDE047;
+  --accent-mint: #6EE7B7;
+  --accent-blue: #93C5FD;
+  --accent-purple: #C4B5FD;
 
   /* Typography */
   --lh-heading: 1.15;
@@ -55,24 +63,25 @@ h4,
 h5,
 h6 {
   line-height: var(--lh-heading);
-  letter-spacing: -0.02em;
-  color: #fff;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
   margin: 0;
+  font-weight: 800;
 }
 
 h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
 }
 
 h2 {
   font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 h3 {
   font-size: clamp(1.25rem, 2vw, 1.5rem);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 p {
@@ -104,7 +113,7 @@ p {
   height: 1px;
   background: linear-gradient(to right,
       transparent,
-      rgba(255, 255, 255, 0.06),
+      rgba(0, 0, 0, 0.08),
       transparent);
 }
 
@@ -114,15 +123,42 @@ p {
 .card {
   background: var(--surface);
   border: 1px solid var(--border-soft);
-  border-radius: 16px;
+  border-radius: 1.5rem;
   padding: 32px 36px;
   transition: 200ms ease;
   box-shadow: none;
 }
 
 .card:hover {
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* Colorful Card Variants */
+.card-pink {
+  background: #F9A8D4;
+  border: none;
+}
+
+.card-yellow {
+  background: #FDE047;
+  border: none;
+}
+
+.card-mint {
+  background: #6EE7B7;
+  border: none;
+}
+
+.card-blue {
+  background: #93C5FD;
+  border: none;
+}
+
+.card-purple {
+  background: #C4B5FD;
+  border: none;
 }
 
 /* Buttons */
@@ -133,8 +169,8 @@ p {
   gap: 0.5rem;
   padding: 14px 24px;
   font-size: 0.95rem;
-  font-weight: 500;
-  border-radius: 12px;
+  font-weight: 600;
+  border-radius: 9999px;
   cursor: pointer;
   transition: 200ms ease;
   text-decoration: none;
@@ -143,24 +179,34 @@ p {
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: var(--text-primary);
   color: #FFFFFF;
 }
 
 .btn-primary:hover {
-  background: #4A6BFF;
+  background: #333;
   transform: translateY(-1px);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-soft);
+  color: var(--text-primary);
+  border: 2px solid var(--text-primary);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: var(--text-secondary);
+  background: var(--text-primary);
+  color: #FFFFFF;
+}
+
+.btn-pink {
+  background: var(--accent);
+  color: var(--text-primary);
+}
+
+.btn-pink:hover {
+  background: #D65DB1;
+  transform: translateY(-1px);
 }
 
 .btn-ghost {
@@ -180,10 +226,10 @@ p {
   justify-content: center;
   width: 3rem;
   height: 3rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-soft);
+  background: rgba(232, 121, 201, 0.15);
+  border: 1px solid rgba(232, 121, 201, 0.2);
   border-radius: 12px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
 }
 
@@ -191,7 +237,7 @@ p {
 .input {
   width: 100%;
   padding: 0.875rem 1rem;
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-soft);
   border-radius: 12px;
   color: var(--text-primary);
@@ -201,7 +247,7 @@ p {
 
 .input:focus {
   outline: none;
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--accent);
 }
 
 /* Navigation */
@@ -213,13 +259,14 @@ p {
   z-index: 100;
   padding: 1rem 0;
   transition: 200ms ease;
-  background: rgba(11, 16, 32, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: transparent;
 }
 
 .nav.scrolled {
   padding: 0.75rem 0;
+  background: rgba(245, 238, 228, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-soft);
 }
 
@@ -233,7 +280,7 @@ p {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--surface);
+  background: var(--text-muted);
   border-radius: 3px;
 }
 
@@ -241,7 +288,7 @@ p {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
@@ -253,25 +300,34 @@ p {
 .modal-content {
   background: var(--bg-secondary);
   border: 1px solid var(--border-soft);
-  border-radius: 16px;
+  border-radius: 1.5rem;
   max-width: 550px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: none;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
-/* Remove visual noise */
+/* Text utilities */
 .text-gradient {
-  background: none;
-  -webkit-background-clip: initial;
-  -webkit-text-fill-color: initial;
-  background-clip: initial;
-  color: inherit;
+  background: linear-gradient(135deg, var(--accent) 0%, #A855F7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .glass {
   background: var(--surface);
   border: 1px solid var(--border-soft);
-  border-radius: 16px;
+  border-radius: 1.5rem;
+}
+
+/* Link Styles */
+.link-underline {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.link-underline:hover {
+  text-decoration-thickness: 2px;
 }

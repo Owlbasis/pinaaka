@@ -76,14 +76,14 @@ export default function FAQ() {
 
         return (
             <div
-                className="border border-[var(--border-soft)] rounded-lg bg-[var(--surface)] overflow-hidden transition-colors"
+                className="border border-[var(--border-soft)] rounded-2xl bg-[var(--surface)] overflow-hidden transition-colors"
             >
                 <button
                     onClick={() => toggleFAQ(uniqueId)}
                     className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
                     aria-expanded={isOpen}
                 >
-                    <span className="font-medium text-white pr-4">
+                    <span className="font-semibold text-[var(--text-primary)] pr-4">
                         {item.question}
                     </span>
                     <span className="text-[var(--text-muted)] flex-shrink-0">
