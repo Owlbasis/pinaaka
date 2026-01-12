@@ -31,9 +31,9 @@ export default function Footer() {
                         <h4 className="text-sm font-bold uppercase tracking-wider text-[var(--text-primary)] mb-2">Connect</h4>
                         <a
                             href="mailto:hello@charcoallabs.com"
-                            className="text-[var(--text-primary)] link-underline hover:opacity-80 transition-opacity"
+                            className="text-[var(--text-primary)] font-semibold hover:opacity-80 transition-opacity"
                         >
-                            Contact
+                            hello@charcoallabs.com
                         </a>
                     </div>
 
