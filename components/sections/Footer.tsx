@@ -22,7 +22,7 @@ export default function Footer() {
                             <span className="text-2xl font-black text-[var(--text-primary)] italic">Charcoal Labs</span>
                         </Link>
                         <span className="text-sm font-medium text-[var(--text-primary)]/80">
-                            Started by IITians
+                            Founded by IIT Alumni
                         </span>
                     </div>
 
