@@ -45,7 +45,7 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                                 className="object-contain"
                             />
                         </div>
-                        <span className="text-lg font-semibold text-white tracking-tight">Charcoal Labs</span>
+                        <span className="text-lg font-bold text-[var(--text-primary)] tracking-tight italic">Charcoal Labs</span>
                     </Link>
 
                     {/* Desktop Nav */}
@@ -54,7 +54,7 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="text-[var(--text-secondary)] hover:text-white transition-colors text-sm font-normal"
+                                className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors text-sm font-medium"
                             >
                                 {link.label}
                             </Link>
@@ -63,17 +63,17 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
 
                     {/* CTAs */}
                     <div className="hidden md:flex items-center gap-3">
-                        <button onClick={onApplyTalent} className="text-sm font-normal text-[var(--text-secondary)] hover:text-white transition-colors px-3 py-2">
+                        <button onClick={onApplyTalent} className="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors px-3 py-2">
                             For Talent
                         </button>
-                        <button onClick={onBookCall} className="btn btn-primary">
+                        <button onClick={onBookCall} className="btn btn-pink">
                             Book a Call
                         </button>
                     </div>
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="md:hidden text-[var(--text-secondary)] p-1"
+                        className="md:hidden text-[var(--text-primary)] p-1"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
                         {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -95,7 +95,7 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                                 <Link
                                     key={link.href}
                                     href={link.href}
-                                    className="text-lg font-normal text-[var(--text-secondary)] hover:text-white py-2 border-b border-[var(--border-soft)]"
+                                    className="text-lg font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] py-2 border-b border-[var(--border-soft)]"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {link.label}
@@ -110,7 +110,7 @@ export default function Navigation({ onBookCall, onApplyTalent }: NavigationProp
                                 </button>
                                 <button
                                     onClick={() => { onBookCall(); setIsMobileMenuOpen(false); }}
-                                    className="btn btn-primary w-full justify-center"
+                                    className="btn btn-pink w-full justify-center"
                                 >
                                     Book a Call
                                 </button>
